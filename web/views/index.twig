@@ -10,61 +10,10 @@
 <p class="lead">Clantag: #QVQRYYG  |  Clanlevel: {{ app.clandetails.level }}  |  Clan War Siege: {{ app.clandetails.wins }}   |  Punkte: {{ app.clandetails.points }} <i class="fa fa-trophy fa-lg text-warning"></i></p>
 
     <p>{{ app.clandetails.description }}</p>
-    <a type="button" class="btn btn-lg btn-default" href="/clanregeln"><i class="fa fa-file-text-o "></i> Clanregeln</a>
-    <a type="button" class="btn btn-lg btn-primary" href="#"><i class="fa fa-trophy"></i> Clan War</a>
+    <a type="button" class="btn btn-lg btn-default" href="/mitglieder"><i class="fa fa-file-text-o "></i> Mitglieder</a>
+    <a type="button" class="btn btn-lg btn-primary" href="/clanwar"><i class="fa fa-trophy"></i> Clan War</a>
   </div>
 </div>
-<div class="container">
-  <div class="col-md-12">
-<div class="row">
 
-  <table id="members" class="table table-striped table-responsive text-center">
-    <thead>
-    <tr>
-      <th class="text-center">#</th><th class="text-center">Level</th><th class="text-center">Liga</th><th class="text-center">Name</th><th class="text-center">Gespendet</th><th class="text-center">Erhalten</th><th class="text-center">Verhältnis</th><th class="text-center">Trophäen</th></tr>
-    </thead>
-    <tbody>
-
-      <!-- <tr>
-        <td>0</td>
-        <td><span class="fa-stack fa-1x">
-            <i class="fa fa-certificate fa-stack-2x text-primary"></i>
-              <strong class="fa-stack-1x certificate-text center-text">110</strong>
-              </span></td>
-        <td><img id="12345" src="https://api-assets.clashofclans.com/leagues/36/JmmTbspV86xBigM7OP5_SjsEDPuE7oXjZC9aOy8xO3s.png" alt="asd"/></td>
-        <td><strong>Johnny_Kanone</strong><br/><small class="text-muted">coLeader</small></td>
-        <td>1234</td>
-        <td>2345</td>
-        <td>0.34</td>
-        <td><span class="label label-default fa-lg">2345 <i class="fa fa-trophy text-warning"></i></span></td>
-      </tr> -->
-
-  {% for rank,mem in app.clanmem %}
-      <tr>
-        <td>{{ rank }}</td>
-        <td><span class="fa-stack fa-1x">
-            <i class="fa fa-certificate fa-stack-2x text-primary"></i>
-              <strong class="fa-stack-1x certificate-text center-text">{{ mem.level }}</strong>
-              </span>
-        </td>
-        <td><img id="{{ mem.leagueid }}" src="{{ mem.leagueicontn }}" alt="{{ mem.leaguename }}"/></td>
-        <td><strong>{{ mem.name }}</strong><br/>
-          <small class="text-muted">{{ mem.role }}</small>
-        </td>
-        <td>{{ mem.donations }}</td>
-        <td>{{ mem.received }}</td>
-        <td>{{ mem.ratio }}</td>
-        <td><span class="label label-default fa-lg">{{ mem.trophies }} <i class="fa fa-trophy text-warning"></i></span>
-        </td>
-      </tr>
-  {% endfor %}
-    </tbody>
-  </table>
-
-
-</div>
-</div>
-
-</div>
 
 {% endblock %}

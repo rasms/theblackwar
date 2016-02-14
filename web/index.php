@@ -9,7 +9,7 @@ date_default_timezone_set('Europe/Berlin');
 
 
 $app = new Silex\Application();
-$app['debug'] = false;
+$app['debug'] = true;
 
 
 $clan = new CoC_Clan("#QVQRYYG");
@@ -84,10 +84,24 @@ $app->get('/', function() use($app) {
   return new Response($body, 200, array('Cache-Control' => 's-maxage=10800, public'));
 });
 
+$app->get('/mitglieder', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  //return $app['twig']->render('index.twig');
+  $body = $app['twig']->render('mitglieder.twig');
+  return new Response($body, 200, array('Cache-Control' => 's-maxage=10800, public'));
+});
+
 $app->get('/clanregeln', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   //return $app['twig']->render('clan.twig');
   $body = $app['twig']->render('clanregeln.twig');
+  return new Response($body, 200, array('Cache-Control' => 's-maxage=10800, public'));
+});
+
+$app->get('/clanwar', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  //return $app['twig']->render('clan.twig');
+  $body = $app['twig']->render('clanwar.twig');
   return new Response($body, 200, array('Cache-Control' => 's-maxage=10800, public'));
 });
 

@@ -1,14 +1,21 @@
-<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+<nav class="navbar navbar-default navbar-static-top">
   <div class="container">
-    <ul class="nav navbar-nav">
-      <li class="{% if app.request.attributes.get('_route') starts with 'book' %}active{% endif %}">
-        <a href="/">Home</a>
-      </li>
-      <li class="{% if app.request.attributes.get('_internal') starts with 'clan' %}active{% endif %}">
-        <a href="/clanregeln">Clanregeln</a>
-      </li>
-
-    </ul>
-
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">The Black War</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Home</a></li>
+        <li><a href="/mitglieder">Mitglieder</a></li>
+        <li><a href="/clanregeln">Clanregeln</a></li>
+        <li><a href="/clanwar">Clan War</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
   </div>
 </nav>
