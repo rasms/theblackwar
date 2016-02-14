@@ -9,7 +9,7 @@ date_default_timezone_set('Europe/Berlin');
 
 
 $app = new Silex\Application();
-$app['debug'] = true;
+$app['debug'] = false;
 
 
 $clan = new CoC_Clan("#QVQRYYG");
