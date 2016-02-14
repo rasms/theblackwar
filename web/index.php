@@ -46,6 +46,7 @@ foreach ($clan->getAllMembers() as $clanmember)
     "ratio" => number_format($ratio, 2),
     "level" => $member->getLevel(),
     "leaguename" => $league->getLeagueName(),
+    "leagueid" => $league->getLeagueId(),
     "leagueicontn" => $league->getLeagueIcon("tiny"),
     "leagueiconsm" => $league->getLeagueIcon("small"),
     "leagueiconmd" => $league->getLeagueIcon("medium"),
