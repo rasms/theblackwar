@@ -1,3 +1,16 @@
+body {
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+}
+
 h1,h2,h3,h4,h5,h6 {
   font-family: 'UnifrakturCook', cursive;
+}
+
+.certificate-text {
+  color: black;
+-webkit-text-fill-color: white; /* Will override color (regardless of order) */
+-webkit-text-stroke-width: 0.5px;
+-webkit-text-stroke-color: black;
+font-weight: 900;
+font-size: 18px;
 }

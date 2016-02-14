@@ -3,46 +3,68 @@
 {% block content %}
 <div class="jumbotron text-center">
   <div class="container">
-    <a href="/">
-      <img src="{{ app.clandetails.badgemd }}"/>
-    </a>
+    <img src="{{ app.clandetails.badgemd }}"/>
     <h1>{{ app.clandetails.name }} </h1>
-    <p class="lead">Clanlevel: {{ app.clandetails.level }}  |  Clantag: #QVQRYYG</p>
+
+
+<p class="lead">Clantag: #QVQRYYG  |  Clanlevel: {{ app.clandetails.level }}  |  Clan War Siege: {{ app.clandetails.wins }}   |  Punkte: {{ app.clandetails.points }} <i class="fa fa-trophy fa-lg text-warning"></i></p>
+
     <p>{{ app.clandetails.description }}</p>
-    <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-php"><span class="glyphicon glyphicon-flash"></span> Getting Started with PHP</a>
-    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/php-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
+    <a type="button" class="btn btn-lg btn-default" href="/clanregeln"><i class="fa fa-file-text-o "></i> Clanregeln</a>
+    <a type="button" class="btn btn-lg btn-primary" href="#"><i class="fa fa-trophy"></i> Clan War</a>
   </div>
 </div>
 <div class="container">
-  <div class="alert alert-info text-center" role="alert">
-    To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-php" class="alert-link">Getting Started with PHP on Heroku</a> tutorial.
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> How this sample app works</h3>
-      <ul>
-        <li>This app was deployed to Heroku, either using Git or by using <a href="https://github.com/heroku/php-getting-started">Heroku Button</a> on the repository.</li>
+  <div class="col-md-12">
+<div class="row">
 
-        <li>When Heroku received the source code, it grabbed all the dependencies in the <a href="https://github.com/heroku/php-getting-started/blob/master/composer.json">composer.json</a>.</li>
-        <li>The platform then spins up a dyno, a lightweight container that provides an isolated environment in which the slug can be mounted and executed.</li>
-        <li>You can scale your app, manage it, and deploy over <a href="https://addons.heroku.com/">150 add-on services</a>, from the Dashboard or CLI.</li>
-        <li>Check out the <a href="https://devcenter.heroku.com/articles/getting-started-with-php">Getting Started</a> guide to learn more!</li>
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
-      <ul>
-        <li><a href="https://www.heroku.com/home">Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/">Heroku Dev Center</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/getting-started-with-php">Getting Started with PHP on Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/deploying-php">Deploying PHP Apps on Heroku</a></li>
-      </ul>
-    </div>
-  </div> <!-- row -->
-   <div class="alert alert-info text-center" role="alert">
-    Please do work through the Getting Started guide, even if you do know how to build such an application.  The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
-  </div>
+  <table id="members" class="table table-striped table-responsive text-center">
+    <thead>
+    <tr>
+      <th class="text-center">#</th><th class="text-center">Level</th><th class="text-center">Liga</th><th class="text-center">Name</th><th class="text-center">Gespendet</th><th class="text-center">Erhalten</th><th class="text-center">Verhältnis</th><th class="text-center">Trophäen</th></tr>
+    </thead>
+    <tbody>
+
+      <!-- <tr>
+        <td>0</td>
+        <td><span class="fa-stack fa-1x">
+            <i class="fa fa-certificate fa-stack-2x text-primary"></i>
+              <strong class="fa-stack-1x certificate-text center-text">110</strong>
+              </span></td>
+        <td><img id="12345" src="https://api-assets.clashofclans.com/leagues/36/JmmTbspV86xBigM7OP5_SjsEDPuE7oXjZC9aOy8xO3s.png" alt="asd"/></td>
+        <td><strong>Johnny_Kanone</strong><br/><small class="text-muted">coLeader</small></td>
+        <td>1234</td>
+        <td>2345</td>
+        <td>0.34</td>
+        <td><span class="label label-default fa-lg">2345 <i class="fa fa-trophy text-warning"></i></span></td>
+      </tr> -->
+
+  {% for rank,mem in app.clanmem %}
+      <tr>
+        <td>{{ rank }}</td>
+        <td><span class="fa-stack fa-1x">
+            <i class="fa fa-certificate fa-stack-2x text-primary"></i>
+              <strong class="fa-stack-1x certificate-text center-text">{{ mem.level }}</strong>
+              </span>
+        </td>
+        <td><img id="{{ mem.leagueid }}" src="{{ mem.leagueicontn }}" alt="{{ mem.leaguename }}"/></td>
+        <td><strong>{{ mem.name }}</strong><br/>
+          <small class="text-muted">{{ mem.role }}</small>
+        </td>
+        <td>{{ mem.donations }}</td>
+        <td>{{ mem.received }}</td>
+        <td>{{ mem.ratio }}</td>
+        <td><span class="label label-default fa-lg">{{ mem.trophies }} <i class="fa fa-trophy text-warning"></i></span>
+        </td>
+      </tr>
+  {% endfor %}
+    </tbody>
+  </table>
+
+
+</div>
+</div>
+
 </div>
 
 {% endblock %}
