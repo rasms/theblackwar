@@ -16,7 +16,7 @@ class ClashOfClans
 {
 
 	//private $_apiKey;
-private $_apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImJjYzE5MWIzLWYwOGItNDAwYS1iN2YzLTgzODA4OGIzMjdjMSIsImlhdCI6MTQ1NTQ1MDM5OCwic3ViIjoiZGV2ZWxvcGVyLzBmZmE3Nzk0LWZiMmQtZGY2Ni1iZmMyLWVlZDE1N2NlMDEzNSIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjU0LjE3My4yMjkuMjAwIiwiNTQuMTc1LjIzMC4yNTIiXSwidHlwZSI6ImNsaWVudCJ9XX0.0oYyyZqumQyPO8tgruIILjGc7P4hHv8ptFTp-o_bC_FyL2w9V1E2ec36IJRh9xjuGbeMVjG421jOK2_vQAcTzw";
+//private $_apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImJjYzE5MWIzLWYwOGItNDAwYS1iN2YzLTgzODA4OGIzMjdjMSIsImlhdCI6MTQ1NTQ1MDM5OCwic3ViIjoiZGV2ZWxvcGVyLzBmZmE3Nzk0LWZiMmQtZGY2Ni1iZmMyLWVlZDE1N2NlMDEzNSIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjU0LjE3My4yMjkuMjAwIiwiNTQuMTc1LjIzMC4yNTIiXSwidHlwZSI6ImNsaWVudCJ9XX0.0oYyyZqumQyPO8tgruIILjGc7P4hHv8ptFTp-o_bC_FyL2w9V1E2ec36IJRh9xjuGbeMVjG421jOK2_vQAcTzw";
 	/**
 	 * Send a Request to SuperCell's Servers and contains the authorization-Token.
 	 *
@@ -25,9 +25,9 @@ private $_apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAw
 	 */
 	protected function sendRequest($url)
 	{
-		//$_apiKey = getenv('COC_KEY');
-		$proxy = 'http://fixie:zeZphn0zj8mqmaG@velodrome.usefixie.com:80';
-		//$proxy = $_ENV['FIXIE_URL'];
+		$_apiKey = getenv('COC_KEY');
+		//$proxy = 'http://fixie:zeZphn0zj8mqmaG@velodrome.usefixie.com:80';
+		$proxy = getenv('FIXIE_URL');
 
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);

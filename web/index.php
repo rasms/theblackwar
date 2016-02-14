@@ -73,8 +73,6 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 ));
 
 // Our web handlers
-$hmm = getenv('COC_KEY');
-echo $hmm;
 $app->get('/', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   //return $app['twig']->render('index.twig');
