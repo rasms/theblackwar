@@ -1,7 +1,7 @@
 <?php
 
 require('../vendor/autoload.php');
-require_once "./ClashAPI/API.class.php";
+require_once "ClashAPI/API.class.php";
 
 $app = new Silex\Application();
 $app['debug'] = true;
