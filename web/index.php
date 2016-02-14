@@ -1,7 +1,7 @@
 <?php
 
 require('../vendor/autoload.php');
-require_once "ClashAPI/API.class.php";
+require_once "./ClashAPI/API.class.php";
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -26,10 +26,15 @@ foreach ($clan->getAllMembers() as $clanmember)
 
 	$ratio = $member->getDonations() / $donationsReceivedCalc;
 
+  $role = $member->getRole();
+  if ($role == 'admin' ){
+    $role = 'elder';
+  }
+
   $clanmem[$member->getClanRank()] = [
     "rank" => $member->getClanRank(),
     "name" => $member->getName(),
-    "role" => $member->getRole(),
+    "role" => $role,
     "trophies" => $member->getTrophies(),
     "donations" => $member->getDonations(),
     "received" => $member->getDonationsReceived(),
