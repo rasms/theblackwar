@@ -5,13 +5,17 @@ require_once "Location.class.php";
 require_once "Clan.class.php";
 require_once "Member.class.php";
 
+
 /**
  * Class to get JSON-decoded arrays containing information provided by SuperCell's official Clash of Clans API located at https://developer.clashofclans.com
  */
 
+
+
 class ClashOfClans
 {
-	private $_apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImI4Mjk4MGE0LTZiMzItNDExZS04ZTBkLTJlZDg0ZWM0ZGIwYiIsImlhdCI6MTQ1NTQ0MzgzMiwic3ViIjoiZGV2ZWxvcGVyLzBmZmE3Nzk0LWZiMmQtZGY2Ni1iZmMyLWVlZDE1N2NlMDEzNSIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjIxNy45My4yMy4xMDkiXSwidHlwZSI6ImNsaWVudCJ9XX0.hL5nhKNgUx85OW-XU-4TnC_L-SQtvgPMmLNaCgZSrNYY2TCpmASI851RCm9S83JI6DncZ95gsiWjbrHEnnQS3A";
+
+	private $_apiKey;
 
 	/**
 	 * Send a Request to SuperCell's Servers and contains the authorization-Token.
@@ -21,8 +25,11 @@ class ClashOfClans
 	 */
 	protected function sendRequest($url)
 	{
+		$_apiKey = getenv('COC_KEY');
+		$proxy = 'http://fixie:zeZphn0zj8mqmaG@velodrome.usefixie.com:80';
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_PROXY, $proxy);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
   			'authorization: Bearer '.$this->_apiKey //
