@@ -27,6 +27,8 @@ private $_apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAw
 	{
 		//$_apiKey = getenv('COC_KEY');
 		$proxy = 'http://fixie:zeZphn0zj8mqmaG@velodrome.usefixie.com:80';
+		//$proxy = $_ENV['FIXIE_URL'];
+
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_PROXY, $proxy);

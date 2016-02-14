@@ -2,6 +2,11 @@
 
 require('../vendor/autoload.php');
 require_once "./ClashAPI/API.class.php";
+use Symfony\Component\HttpFoundation\Response;
+
+date_default_timezone_set('Europe/Berlin');
+
+
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -49,7 +54,6 @@ foreach ($clan->getAllMembers() as $clanmember)
 }
 
 
-
 $app['clandetails'] = $clandetails;
 $app['clanmem'] = $clanmem;
 
@@ -58,21 +62,38 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
   'monolog.logfile' => 'php://stderr',
 ));
 
+$app->register(new Silex\Provider\HttpCacheServiceProvider(), array(
+  'http_cache.cache_dir' => __DIR__.'/cache/',
+));
+
+
 // Register view rendering
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/views',
 ));
 
 // Our web handlers
-
+$hmm = getenv('COC_KEY');
+echo $hmm;
 $app->get('/', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('index.twig');
+  //return $app['twig']->render('index.twig');
+  $body = $app['twig']->render('index.twig');
+  return new Response($body, 200, array('Cache-Control' => 's-maxage=3600, public'));
 });
 
 $app->get('/clan', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('clan.twig');
+  //return $app['twig']->render('clan.twig');
+  $body = $app['twig']->render('clan.twig');
+  return new Response($body, 200, array('Cache-Control' => 's-maxage=3600, public'));
 });
 
-$app->run();
+//$app['http_cache']->run();
+
+if ($app['debug']) {
+ $app->run();
+ }
+ else{
+ $app['http_cache']->run();
+ }
