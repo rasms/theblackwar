@@ -3,6 +3,8 @@
 require('../vendor/autoload.php');
 require_once "./ClashAPI/API.class.php";
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+
 
 date_default_timezone_set('Europe/Berlin');
 
@@ -111,5 +113,6 @@ if ($app['debug']) {
  $app->run();
  }
  else{
+Request::setTrustedProxies(array('127.0.0.1'));
  $app['http_cache']->run();
  }
