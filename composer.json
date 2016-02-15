@@ -10,7 +10,7 @@
   },
   "scripts": {
     "post-install-cmd": [
-        "chmod 777 web/cache"
+        "sudo chmod 777 web/cache"
     ]
   }
 }
