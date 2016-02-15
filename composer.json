@@ -10,7 +10,7 @@
   },
   "scripts": {
        "post-package-install": [
-           "chmod -R 777 /web/cache"
+           "chmod -R 777 web/cache"
        ]
    }
 }
