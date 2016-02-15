@@ -8,9 +8,11 @@
   "require-dev": {
     "heroku/heroku-buildpack-php": "*"
   },
-  "scripts": {
-    "post-install-cmd": [
-        "sudo chmod 777 web/cache"
-    ]
-  }
+  "extra": {
+         "heroku": {
+             "compile": [
+                 "chmod 777 /web/cache"
+             ]
+         }
+     }
 }
