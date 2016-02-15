@@ -113,6 +113,6 @@ if ($app['debug']) {
  $app->run();
  }
  else{
-Request::setTrustedProxies(array($request->server->get('REMOTE_ADDR')));
+Request::setTrustedProxies(array('127.0.0.1'));
  $app['http_cache']->run();
  }
