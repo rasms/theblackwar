@@ -7,5 +7,10 @@
   },
   "require-dev": {
     "heroku/heroku-buildpack-php": "*"
+  },
+  "scripts": {
+    "post-install-cmd": [
+        "chmod 777 web/cache"
+    ]
   }
 }
