@@ -27,17 +27,49 @@ private $_apiKey = null;
 		$this->_apiKey = getenv('COC_KEY');
 		$proxy = getenv('FIXIE_URL');
 
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_PROXY, $proxy);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-  			'authorization: Bearer '.$this->_apiKey //
-		));
-		$output = curl_exec($ch);
-		curl_close($ch);
+		$cache_file = dirname(__FILE__) . 'cache/' . md5($url);
+    $expires = time() - 2*60*60;
 
-		return $output;
+		if( !file_exists($cache_file) ) die("Cache file is missing: $cache_file");
+
+		if ( filectime($cache_file) < $expires || file_get_contents($cache_file)  == '') {
+
+        // File is too old, refresh cache
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $url);
+				curl_setopt($ch, CURLOPT_PROXY, $proxy);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+						'authorization: Bearer '.$this->_apiKey //
+				));
+				$output = curl_exec($ch);
+				curl_close($ch);
+
+        // Remove cache file on error to avoid writing wrong xml
+        if ( $output )
+            file_put_contents($cache_file, $output);
+        else
+            unlink($cache_file);
+    	} else {
+
+        // Fetch cache
+        $output = file_get_contents($cache_file);
+
+    }
+
+
+		//
+		// $ch = curl_init();
+		// curl_setopt($ch, CURLOPT_URL, $url);
+		// curl_setopt($ch, CURLOPT_PROXY, $proxy);
+		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		// curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+  	// 		'authorization: Bearer '.$this->_apiKey //
+		// ));
+		// $output = curl_exec($ch);
+		// curl_close($ch);
+		//
+		// return $output;
 	}
 
 	/**

@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 date_default_timezone_set('Europe/Berlin');
 
 
-
 $app = new Silex\Application();
 $app['debug'] = false;
 
@@ -68,9 +67,9 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
   'monolog.logfile' => 'php://stderr',
 ));
 
-$app->register(new Silex\Provider\HttpCacheServiceProvider(), array(
-  'http_cache.cache_dir' => __DIR__.'/cache',
-));
+// $app->register(new Silex\Provider\HttpCacheServiceProvider(), array(
+//   'http_cache.cache_dir' => __DIR__.'/cache',
+// ));
 
 
 // Register view rendering
@@ -107,12 +106,12 @@ $app->get('/clanwar', function() use($app) {
   return new Response($body, 200, array('Cache-Control' => 's-maxage=10800, public'));
 });
 
-//$app['http_cache']->run();
+$app->run();
 
-if ($app['debug']) {
- $app->run();
- }
- else{
-Request::setTrustedProxies(array('127.0.0.1'));
- $app['http_cache']->run();
- }
+// if ($app['debug']) {
+//  $app->run();
+//  }
+//  else{
+// Request::setTrustedProxies(array('127.0.0.1'));
+//  $app['http_cache']->run();
+//  }
