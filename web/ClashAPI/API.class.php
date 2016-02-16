@@ -27,7 +27,9 @@ private $_apiKey = null;
 		$this->_apiKey = getenv('COC_KEY');
 		$proxy = getenv('FIXIE_URL');
 
-		$cache_file = __DIR__ . '/../cache/' . md5($url);
+		//$cache_file = __DIR__ . '/../cache/' . md5($url);
+		$cache_file = __DIR__ . '/tmp/' . md5($url);
+
     $expires = time() - 10;//2*60*60;
 
 		if( !file_exists($cache_file) ) die("Cache file is missing: $cache_file");
