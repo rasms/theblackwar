@@ -28,7 +28,7 @@ private $_apiKey = null;
 		$proxy = getenv('FIXIE_URL');
 
 		$cache_file = __DIR__ . '/../cache/' . md5($url);
-    $expires = time() - 2*60*60;
+    $expires = time() - 10;//2*60*60;
 
 		if( !file_exists($cache_file) ) die("Cache file is missing: $cache_file");
 
