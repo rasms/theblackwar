@@ -27,16 +27,40 @@ private $_apiKey = null;
 		$this->_apiKey = getenv('COC_KEY');
 		$proxy = getenv('FIXIE_URL');
 
-		//$cache_file = __DIR__ . '/../cache/' . md5($url);
-		$cache_file = '/tmp/' . md5($url);
 
-    $expires = time() - 10;//2*60*60;
+		// create a new persistent client
+		$m = new Memcached("memcached_pool");
+		$m->setOption(Memcached::OPT_BINARY_PROTOCOL, TRUE);
 
-		if( !file_exists($cache_file) ) die("Cache file is missing: $cache_file");
+		// some nicer default options
+		$m->setOption(Memcached::OPT_NO_BLOCK, TRUE);
+		$m->setOption(Memcached::OPT_AUTO_EJECT_HOSTS, TRUE);
+		$m->setOption(Memcached::OPT_CONNECT_TIMEOUT, 2000);
+		$m->setOption(Memcached::OPT_POLL_TIMEOUT, 2000);
+		$m->setOption(Memcached::OPT_RETRY_TIMEOUT, 2);
 
-		if ( filectime($cache_file) < $expires || file_get_contents($cache_file)  == '') {
+		// setup authentication
+		$m->setSaslAuthData( getenv("MEMCACHIER_USERNAME")
+		                   , getenv("MEMCACHIER_PASSWORD") );
 
-        // File is too old, refresh cache
+		// We use a consistent connection to memcached, so only add in the
+		// servers first time through otherwise we end up duplicating our
+		// connections to the server.
+		if (!$m->getServerList()) {
+		    // parse server config
+		    $servers = explode(",", getenv("MEMCACHIER_SERVERS"));
+		    foreach ($servers as $s) {
+		        $parts = explode(":", $s);
+		        $m->addServer($parts[0], $parts[1]);
+		    }
+		}
+
+		if ($m->get($url)) {
+		    // Get cached value
+		    $output = $m->get($url);
+		} else {
+		    // Fetch filters from Stackla REST API
+				// File is too old, refresh cache
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, $url);
 				curl_setopt($ch, CURLOPT_PROXY, $proxy);
@@ -46,18 +70,10 @@ private $_apiKey = null;
 				));
 				$output = curl_exec($ch);
 				curl_close($ch);
+		    // Cache filters for the next 30 seconds
+		    $m->set($url, $output, time() + 30);
+		}
 
-        // Remove cache file on error to avoid writing wrong xml
-        if ( $output )
-            file_put_contents($cache_file, $output);
-        else
-            unlink($cache_file);
-    	} else {
-
-        // Fetch cache
-        $output = file_get_contents($cache_file);
-
-    }
 
 
 		//
