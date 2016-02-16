@@ -71,7 +71,7 @@ private $_apiKey = null;
 				$output = curl_exec($ch);
 				curl_close($ch);
 		    // Cache filters for the next 30 seconds
-		    $m->set($url, $output, time() + 30);
+		    $m->set($url, $output, time() + 3600);
 		}
 
 
