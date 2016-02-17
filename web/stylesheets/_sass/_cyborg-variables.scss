@@ -54,11 +54,11 @@ $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
 
 $font-size-h1:            66px !default;
-$font-size-h2:            55px !default;
-$font-size-h3:            44px !default;
-$font-size-h4:            34px !default;
-$font-size-h5:            30px !default;
-$font-size-h6:            20px !default;
+$font-size-h2:            50px !default;
+$font-size-h3:            40px !default;
+$font-size-h4:            30px !default;
+$font-size-h5:            26px !default;
+$font-size-h6:            18px !default;
 
 //** Unit-less `line-height` for use in components like buttons.
 $line-height-base:        1.428571429 !default; // 20/14
@@ -67,7 +67,7 @@ $line-height-computed:    floor(($font-size-base * $line-height-base)) !default;
 
 //** By default, this inherits from the `<body>`.
 $headings-font-family:    $font-family-base !default;
-$headings-font-weight:    400 !default;
+$headings-font-weight:    700 !default;
 $headings-line-height:    1.1 !default;
 $headings-color:          #fff !default;
 
