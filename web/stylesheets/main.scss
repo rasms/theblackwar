@@ -101,7 +101,7 @@ h1,h2,h3,h4,h5,h6,.navbar-brand {
 
 .member {
   font-family: 'UnifrakturCook', cursive;
-  font-size: 22px;
+  font-size: 24px;
 }
 
 .trophies {
@@ -110,4 +110,12 @@ h1,h2,h3,h4,h5,h6,.navbar-brand {
 
 footer {
     margin: 5em 0;
+    font-size: 16px;
+    color: $gray-light;
+}
+
+footer a {
+  color: $gray-lighter;
+  text-decoration: none;
+  border-bottom: 1px dotted $gray-light;
 }

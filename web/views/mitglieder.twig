@@ -35,7 +35,7 @@
               <strong class="fa-stack-1x certificate-text center-text">{{ mem.level }}</strong>
               </span>
         </td>
-        <td><img id="{{ mem.leagueid }}" src="{{ mem.leagueicontn }}" alt="{{ mem.leaguename }}"/></td>
+        <td><img value="{{ mem.leagueid }}" src="{{ mem.leagueicontn }}" alt="{{ mem.leaguename }}"/></td>
         <td><span class="member">{{ mem.name }}&nbsp;
         {% if mem.role == 'member' %}
         {% elseif mem.role == 'admin' %}
@@ -43,7 +43,7 @@
         {% elseif mem.role == 'coLeader' %}
         <i class="fa fa-star-o text-warning" data-toggle="tooltip" data-placement="bottom" title="Vize-Anführer"></i>
         {% elseif mem.role == 'leader' %}
-        <i class="fa fa-start text-warning" data-toggle="tooltip" data-placement="bottom" title="Anführer"></i>
+        <i class="fa fa-star text-warning" data-toggle="tooltip" data-placement="bottom" title="Anführer"></i>
         {% endif %}
         </td>
         <td>{{ mem.donations }}</td>
