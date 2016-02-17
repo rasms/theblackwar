@@ -2,9 +2,6 @@
 
 require('../vendor/autoload.php');
 require_once "./ClashAPI/API.class.php";
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
-
 
 date_default_timezone_set('Europe/Berlin');
 
@@ -63,10 +60,6 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
   'monolog.logfile' => 'php://stderr',
 ));
 
-// $app->register(new Silex\Provider\HttpCacheServiceProvider(), array(
-//   'http_cache.cache_dir' => __DIR__.'/cache',
-// ));
-
 
 // Register view rendering
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
@@ -76,38 +69,32 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 // Our web handlers
 $app->get('/', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  //return $app['twig']->render('index.twig');
-  $body = $app['twig']->render('index.twig');
-  return new Response($body, 200, array('Cache-Control' => 's-maxage=10800, public'));
+  return $app['twig']->render('index.twig');
 });
 
 $app->get('/mitglieder', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  //return $app['twig']->render('index.twig');
-  $body = $app['twig']->render('mitglieder.twig');
-  return new Response($body, 200, array('Cache-Control' => 's-maxage=10800, public'));
+  return $app['twig']->render('mitglieder.twig');
 });
 
 $app->get('/clanregeln', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  //return $app['twig']->render('clan.twig');
-  $body = $app['twig']->render('clanregeln.twig');
-  return new Response($body, 200, array('Cache-Control' => 's-maxage=10800, public'));
+  return $app['twig']->render('clanregeln.twig');
 });
 
 $app->get('/clanwar', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  //return $app['twig']->render('clan.twig');
-  $body = $app['twig']->render('clanwar.twig');
-  return new Response($body, 200, array('Cache-Control' => 's-maxage=10800, public'));
+  return $app['twig']->render('clanwar.twig');
+});
+
+$app->get('/impressum', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('impressum.twig');
+});
+
+$app->get('/datenschutz', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('datenschutz.twig');
 });
 
 $app->run();
-
-// if ($app['debug']) {
-//  $app->run();
-//  }
-//  else{
-// Request::setTrustedProxies(array('127.0.0.1'));
-//  $app['http_cache']->run();
-//  }
