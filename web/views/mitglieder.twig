@@ -36,21 +36,20 @@
               </span>
         </td>
         <td><img id="{{ mem.leagueid }}" src="{{ mem.leagueicontn }}" alt="{{ mem.leaguename }}"/></td>
-        <td><strong>{{ mem.name }}</strong>&nbsp;
+        <td><span class="member">{{ mem.name }}&nbsp;
         {% if mem.role == 'member' %}
-
         {% elseif mem.role == 'admin' %}
         <i class="fa fa-star-o text-warning" data-toggle="tooltip" data-placement="bottom" title="Ältester"></i>
         {% elseif mem.role == 'coLeader' %}
         <i class="fa fa-star text-warning" data-toggle="tooltip" data-placement="bottom" title="Vize-Anführer"></i>
         {% elseif mem.role == 'leader' %}
-        <i class="fa fa-diamond text-danger" data-toggle="tooltip" data-placement="bottom" title="Anführer"></i>
+        <i class="fa fa-certificate text-info" data-toggle="tooltip" data-placement="bottom" title="Anführer"></i>
         {% endif %}
         </td>
         <td>{{ mem.donations }}</td>
         <td>{{ mem.received }}</td>
         <td>{{ mem.ratio }}</td>
-        <td><span class="label label-default fa-lg">{{ mem.trophies }} <i class="fa fa-trophy text-warning"></i></span>
+        <td><span class="label label-default trophies">{{ mem.trophies }} <i class="fa fa-trophy text-warning"></i></span>
         </td>
       </tr>
   {% endfor %}
