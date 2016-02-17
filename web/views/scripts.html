@@ -4,6 +4,9 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
 
 <script type="text/javascript">
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 $(document).ready(function() {
     $('#members').DataTable({
       "searching": false,
