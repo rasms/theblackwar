@@ -39,11 +39,11 @@
         <td><span class="member">{{ mem.name }}&nbsp;
         {% if mem.role == 'member' %}
         {% elseif mem.role == 'admin' %}
-        <i class="fa fa-star-o text-warning" data-toggle="tooltip" data-placement="bottom" title="Ältester"></i>
+        <i class="fa fa-star-o text-muted" data-toggle="tooltip" data-placement="bottom" title="Ältester"></i>
         {% elseif mem.role == 'coLeader' %}
-        <i class="fa fa-star text-warning" data-toggle="tooltip" data-placement="bottom" title="Vize-Anführer"></i>
+        <i class="fa fa-star-o text-warning" data-toggle="tooltip" data-placement="bottom" title="Vize-Anführer"></i>
         {% elseif mem.role == 'leader' %}
-        <i class="fa fa-start text-warning" data-toggle="tooltip" data-placement="bottom" title="Anführer"><i class="fa fa-start text-warning" data-toggle="tooltip" data-placement="bottom" title="Anführer"></i>
+        <i class="fa fa-start text-warning" data-toggle="tooltip" data-placement="bottom" title="Anführer"></i>
         {% endif %}
         </td>
         <td>{{ mem.donations }}</td>

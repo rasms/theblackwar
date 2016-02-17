@@ -8,7 +8,12 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 $(document).ready(function() {
-  var t = $('#example').DataTable( {
+
+  var url = window.location;
+// Will only work if string in href matches with location
+$('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+
+  var t = $('#members').DataTable( {
        "columnDefs": [ {
            "searchable": false,
            "orderable": false,
