@@ -92,8 +92,10 @@ h1,h2,h3,h4,h5,h6,.navbar-brand {
 
 .certificate-text {
   color: #fff;
-font-weight: 900;
-font-size: 18px;
+  font-weight: 900;
+  font-size: 18px;
+  -webkit-text-stroke: .25px #000;
+  text-shadow: 0 3px #000;
 }
 
 
@@ -104,4 +106,8 @@ font-size: 18px;
 
 .trophies {
   font-size: 95%;
+}
+
+footer {
+    margin: 5em 0;
 }

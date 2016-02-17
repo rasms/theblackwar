@@ -29,7 +29,7 @@
 
   {% for rank,mem in app.clanmem %}
       <tr>
-        <td>{{ rank }}</td>
+        <td></td>
         <td><span class="fa-stack fa-1x">
             <i class="fa fa-certificate fa-stack-2x text-primary"></i>
               <strong class="fa-stack-1x certificate-text center-text">{{ mem.level }}</strong>
@@ -43,7 +43,7 @@
         {% elseif mem.role == 'coLeader' %}
         <i class="fa fa-star text-warning" data-toggle="tooltip" data-placement="bottom" title="Vize-Anführer"></i>
         {% elseif mem.role == 'leader' %}
-        <i class="fa fa-certificate text-info" data-toggle="tooltip" data-placement="bottom" title="Anführer"></i>
+        <i class="fa fa-start text-warning" data-toggle="tooltip" data-placement="bottom" title="Anführer"><i class="fa fa-start text-warning" data-toggle="tooltip" data-placement="bottom" title="Anführer"></i>
         {% endif %}
         </td>
         <td>{{ mem.donations }}</td>
