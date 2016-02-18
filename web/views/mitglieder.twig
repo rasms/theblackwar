@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% block sub_title 'Mitglieder | ' %}
 {% block content %}
 
 <div class="container">
@@ -11,7 +12,7 @@
     <tr>
       <th class="text-center hidden-xs">#</th>
       <th class="text-center">Level</th>
-      <th class="text-center">Liga</th>
+      <th class="text-center hidden-xs">Liga</th>
       <th class="text-center">Name</th>
       <th class="text-center hidden-xs">Gespendet</th>
       <th class="text-center hidden-xs">Erhalten</th>
@@ -31,7 +32,7 @@
               <strong class="fa-stack-1x certificate-text center-text">{{ mem.level }}</strong>
               </span>
         </td>
-        <td><img value="{{ mem.leagueid }}" src="{{ mem.leagueicontn }}" alt="{{ mem.leaguename }}"/></td>
+        <td class="hidden-xs"><img title="{{ mem.leagueid }}" src="{{ mem.leagueicontn }}" alt="{{ mem.leaguename }}"/></td>
         <td><span class="member">{{ mem.name }}&nbsp;
         {% if mem.role == 'member' %}
         {% elseif mem.role == 'admin' %}
