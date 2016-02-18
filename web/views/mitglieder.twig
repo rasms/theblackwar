@@ -9,27 +9,23 @@
   <table id="members" class="table table-hover table-responsive text-center">
     <thead>
     <tr>
-      <th class="text-center">#</th><th class="text-center">Level</th><th class="text-center">Liga</th><th class="text-center">Name</th><th class="text-center">Gespendet</th><th class="text-center">Erhalten</th><th class="text-center">Verhältnis</th><th class="text-center">Trophäen</th></tr>
+      <th class="text-center hidden-xs">#</th>
+      <th class="text-center">Level</th>
+      <th class="text-center">Liga</th>
+      <th class="text-center">Name</th>
+      <th class="text-center hidden-xs">Gespendet</th>
+      <th class="text-center hidden-xs">Erhalten</th>
+      <th class="text-center">
+        <span class="hidden-xs">Verhältnis</span>
+        <span class="visible-xs-block">SV</span>
+      </th>
+      <th class="text-center">Trophäen</th></tr>
     </thead>
     <tbody>
 
-      <!-- <tr>
-        <td>0</td>
-        <td><span class="fa-stack fa-1x">
-            <i class="fa fa-certificate fa-stack-2x text-primary"></i>
-              <strong class="fa-stack-1x certificate-text center-text">110</strong>
-              </span></td>
-        <td><img id="12345" src="https://api-assets.clashofclans.com/leagues/36/JmmTbspV86xBigM7OP5_SjsEDPuE7oXjZC9aOy8xO3s.png" alt="asd"/></td>
-        <td><strong>Johnny_Kanone</strong><br/><small class="text-muted">coLeader</small></td>
-        <td>1234</td>
-        <td>2345</td>
-        <td>0.34</td>
-        <td><span class="label label-default fa-lg">2345 <i class="fa fa-trophy text-warning"></i></span></td>
-      </tr> -->
-
   {% for rank,mem in app.clanmem %}
       <tr>
-        <td></td>
+        <td class="hidden-xs"></td>
         <td><span class="fa-stack fa-1x">
             <i class="fa fa-certificate fa-stack-2x text-primary"></i>
               <strong class="fa-stack-1x certificate-text center-text">{{ mem.level }}</strong>
@@ -46,14 +42,14 @@
         <i class="fa fa-star text-warning" data-toggle="tooltip" data-placement="bottom" title="Anführer"></i>
         {% endif %}
         </td>
-        <td>{{ mem.donations }}</td>
-        <td>{{ mem.received }}</td>
+        <td class="hidden-xs">{{ mem.donations }}</td>
+        <td class="hidden-xs">{{ mem.received }}</td>
         <td>
           {% if mem.ratio >= 1 %}
           <span class="text-success">{{ mem.ratio }}</span>
-          {% elseif  mem.ratio < 1 and mem.ratio >= 0.5 %}
+          {% elseif  mem.ratio < 1 and mem.ratio >= 0.33 %}
           <span class="text-warning">{{ mem.ratio }}</span>
-          {% elseif  mem.ratio < 0.5 %}
+          {% elseif  mem.ratio < 0.33 %}
           <span class="text-danger">{{ mem.ratio }}</span>
           {% else %}
           {{ mem.ratio }}

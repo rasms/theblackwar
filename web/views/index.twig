@@ -6,21 +6,30 @@
     <img src="{{ app.clandetails.badgemd }}"/>
     <h1>{{ app.clandetails.name }} </h1>
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-sm-6 col-md-4">
   <p>
-    <small>Clantag: </small><span class="label label-default">#QVQRYYG</span>&nbsp;&nbsp;
-    <small>Clanlevel: </small><span class="label label-default">{{ app.clandetails.level }}</span>&nbsp;&nbsp;
-    <small>Clan War Siege: </small><span class="label label-default">{{ app.clandetails.wins }}</span>&nbsp;&nbsp;
+    <small>Clantag: </small><span class="label label-default">#QVQRYYG</span>
+  </p>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <small>Clanlevel: </small><span class="label label-default">{{ app.clandetails.level }}</span>
+  </p>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <small>Clan War Siege: </small><span class="label label-default">{{ app.clandetails.wins }}</span>
+  </p>
+  </div>
+  <div class="col-sm-6 col-md-4">
     <small>Punkte: </small><span class="label label-default">{{ app.clandetails.points }} <i class="fa fa-trophy fa-lg text-warning"></i></span>
   </p>
   </div>
-  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
+  <div class="col-lg-10 col-lg-offset-1 col-md-12 col-md-offset-0">
     <p>{{ app.clandetails.description }}</p>
   </div>
 
 </div>
 
-    <a type="button" class="btn btn-default" href="//www.clanwartracker.com" target="_blank">Clanwartracker <i class="fa fa-file-text-o"></i></a>
+    <a type="button" class="btn btn-default" href="//www.clanwartracker.com" target="_blank">Clanwartracker <i class="fa fa-bar-chart"></i></a>
     <a type="button" class="btn btn-info" href="//tbwjoin.herokuapp.com" target="_blank">#tbw bei Slack <i class="fa fa-slack"></i></a>
   </div>
 </div>
