@@ -6,7 +6,7 @@
 <div class="row">
 <h1>Mitglieder</h1>
 
-  <table id="members" class="table table-striped table-responsive text-center">
+  <table id="members" class="table table-hover table-responsive text-center">
     <thead>
     <tr>
       <th class="text-center">#</th><th class="text-center">Level</th><th class="text-center">Liga</th><th class="text-center">Name</th><th class="text-center">Gespendet</th><th class="text-center">Erhalten</th><th class="text-center">Verhältnis</th><th class="text-center">Trophäen</th></tr>
@@ -48,7 +48,17 @@
         </td>
         <td>{{ mem.donations }}</td>
         <td>{{ mem.received }}</td>
-        <td>{{ mem.ratio }}</td>
+        <td>{{ mem.ratio }}
+          {% if mem.ratio >= 1 %}
+          <span class="text-success">{{ mem.ratio }}</span>
+          {% elseif  mem.ratio < 1 and mem.ration >= 0.5 %}
+          <span class="text-warning">{{ mem.ratio }}</span>
+          {% elseif  mem.ratio < 0.5 %}
+          <span class="text-danger">{{ mem.ratio }}</span>
+          {% else %}
+          {{ mem.ratio }}
+          {% endif %}
+        </td>
         <td><span class="label label-default trophies">{{ mem.trophies }} <i class="fa fa-trophy text-warning"></i></span>
         </td>
       </tr>
