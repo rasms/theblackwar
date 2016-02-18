@@ -48,10 +48,10 @@
         </td>
         <td>{{ mem.donations }}</td>
         <td>{{ mem.received }}</td>
-        <td>{{ mem.ratio }}
+        <td>
           {% if mem.ratio >= 1 %}
           <span class="text-success">{{ mem.ratio }}</span>
-          {% elseif  mem.ratio < 1 and mem.ration >= 0.5 %}
+          {% elseif  mem.ratio < 1 and mem.ratio >= 0.5 %}
           <span class="text-warning">{{ mem.ratio }}</span>
           {% elseif  mem.ratio < 0.5 %}
           <span class="text-danger">{{ mem.ratio }}</span>
