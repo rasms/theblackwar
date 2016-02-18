@@ -8,20 +8,26 @@
 <div class="row">
   <div class="col-sm-6 col-md-4">
   <p>
-    <small>Clantag: </small><span class="label label-default">#QVQRYYG</span>
+    <small>Clantag: </small>
+    <span class="label label-default">#QVQRYYG</span>
   </p>
   </div>
   <div class="col-sm-6 col-md-4">
-    <small>Clanlevel: </small><span class="label label-default">{{ app.clandetails.level }}</span>
+    <p>
+      <small>Clanlevel: </small>
+      <span class="label label-default">{{ app.clandetails.level }}</span>
+    </p>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <p>
+    <small>Clan War Siege: </small>
+    <span class="label label-default">{{ app.clandetails.wins }}</span>
   </p>
   </div>
   <div class="col-sm-6 col-md-4">
-    <small>Clan War Siege: </small><span class="label label-default">{{ app.clandetails.wins }}</span>
-  </p>
-  </div>
-  <div class="col-sm-6 col-md-4">
+    <p>
     <small>Punkte: </small><span class="label label-default">{{ app.clandetails.points }} <i class="fa fa-trophy fa-lg text-warning"></i></span>
-  </p>
+    </p>
   </div>
   <div class="col-lg-10 col-lg-offset-1 col-md-12 col-md-offset-0">
     <p>{{ app.clandetails.description }}</p>
