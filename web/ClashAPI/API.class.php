@@ -25,7 +25,7 @@ private $_apiKey = null;
 	protected function sendRequest($url)
 	{
 		$this->_apiKey = getenv('COC_KEY');
-		$quotaguard_env = getenv('QUOTAGUARDSTATIC_URL');
+		$proxy = getenv('FIXIE_URL');
 
 
 		// create a new persistent client
@@ -61,16 +61,9 @@ private $_apiKey = null;
 		} else {
 		    // Fetch filters from Stackla REST API
 				// File is too old, refresh cache
-
- 				$quotaguard = parse_url($quotaguard_env);
- 				$proxyUrl = $quotaguard['host'].":".$quotaguard['port'];
- 				$proxyAuth = $quotaguard['user'].":".$quotaguard['pass'];
-
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, $url);
-				curl_setopt($ch, CURLOPT_PROXY, $proxyUrl);
-				curl_setopt($ch, CURLOPT_PROXYAUTH, CURLAUTH_BASIC);
-				curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyAuth);
+				curl_setopt($ch, CURLOPT_PROXY, $proxy);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 				curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 						'authorization: Bearer '.$this->_apiKey //
