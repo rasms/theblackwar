@@ -1,5 +1,6 @@
 
-
+@import "_sass/dataTables.bootstrap.min";
+@import "_sass/dataTables.fontAwesome";
 @import "_sass/cyborg-variables";
 @import "_sass/bootstrap";
 @import "_sass/cyborg";
@@ -7,6 +8,10 @@
 h1,.navbar-brand {
   font-family: 'Alegreya', serif;
   font-weight: 900;
+}
+
+h1, h2, h3, h4, h5, h6{
+  word-wrap: break-word;
 }
 
 .cover-container {
