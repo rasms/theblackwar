@@ -25,7 +25,7 @@ private $_apiKey = null;
 	protected function sendRequest($url)
 	{
 		$this->_apiKey = getenv('COC_KEY');
-		$proxy = getenv('FIXIE_URL');
+		$proxy = getenv('QUOTAGUARDSTATIC_URL');
 
 
 		// create a new persistent client
