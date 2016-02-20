@@ -98,7 +98,7 @@ $app->get('/datenschutz', function() use($app) {
   return $app['twig']->render('datenschutz.twig');
 });
 
-$app->error(function (\Exception $e, $code) {
+$app->error(function (\Exception $e, $code) use($app) {
     switch ($code) {
         case 404:
             $message = $app['twig']->render('404.twig');
