@@ -2,6 +2,7 @@
 
 require('../vendor/autoload.php');
 require_once "./ClashAPI/API.class.php";
+use Symfony\Component\HttpFoundation\Response;
 
 date_default_timezone_set('Europe/Berlin');
 
@@ -96,5 +97,18 @@ $app->get('/datenschutz', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('datenschutz.twig');
 });
+
+$app->error(function (\Exception $e, $code) {
+    switch ($code) {
+        case 404:
+            $message = $app['twig']->render('404.twig');
+            break;
+        default:
+            $message = 'We are sorry, but something went terribly wrong.';
+    }
+
+    return new Response($message);
+});
+
 
 $app->run();
