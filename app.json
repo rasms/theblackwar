@@ -1,6 +1,6 @@
 {
-  "name": "PHP Getting Started",
-  "description": "A barebones PHP app that makes use of the Silex web framework",
-  "repository": "https://github.com/heroku/php-getting-started",
+  "name": "The Black War",
+  "description": "A CoC Clan Website, calling the CoC API for current clandetails.",
+  "repository": "https://github.com/rasms/theblackwar",
   "addons": []
 }

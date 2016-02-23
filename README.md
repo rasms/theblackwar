@@ -1,23 +1,6 @@
-# php-getting-started
+# The Black War
 
-A barebones PHP app that makes use of the [Silex](http://silex.sensiolabs.org/) web framework, which can easily be deployed to Heroku.
+A simple Clash of Clans Clanwebsite for [The Black War](http://theblackwar.herokuapp.com), fetching the latest clandetails from the CoC API.
 
-This application supports the [Getting Started with PHP on Heroku](https://devcenter.heroku.com/articles/getting-started-with-php) article - check it out.
+Based on the Heroku [php-getting-started](https://github.com/heroku/php-getting-started), using the [ClashOfClans-API-PHP Warpper](https://github.com/1n9i9c7om/ClashOfClans-API-PHP).
 
-## Deploying
-
-Install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
-
-```sh
-$ git clone git@github.com:heroku/php-getting-started.git # or clone your own fork
-$ cd php-getting-started
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
-
-## Documentation
-
-For more information about using PHP on Heroku, see these Dev Center articles:
-
-- [PHP on Heroku](https://devcenter.heroku.com/categories/php)
