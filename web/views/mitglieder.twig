@@ -3,13 +3,46 @@
 {% block content %}
 
 <div class="container">
-  <div class="col-md-12">
-<div class="row">
+  <div class="row">
+    <div class="col-md-12">
+
 <h1>Mitglieder</h1>
 
-{{ app.clandetails.membercount }}
-{{ app.clandetails.avgtroph }}
-{{ app.clandetails.avglvl }}
+<div class="row">
+  <div class="col-sm-6 col-md-3">
+  <p>
+    <small>Mitglieder </small><span class="hidden-xs"><br/></span>
+    <span class="label label-default">{{ app.clandetails.membercount }}  <i class="fa fa-users fa-lg text-muted"></i></span>
+  </p>
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <p>
+      <small>Durchschnittslevel </small><span class="hidden-xs"><br/></span>
+      <span class="fa-stack fa-1x">
+          <i class="fa fa-certificate fa-stack-2x text-primary"></i>
+            <strong class="fa-stack-1x certificate-text center-text">{{ app.clandetails.avglvl }}</strong>
+            </span>
+    </p>
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <p>
+    <small>Durchschnittspokale </small><span class="hidden-xs"><br/></span>
+        <span class="label label-default">{{ app.clandetails.avgtroph }} <i class="fa fa-trophy fa-lg text-warning"></i></span>
+  </p>
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <p>
+    <small>Clan Punkte </small><span class="hidden-xs"><br/></span>
+    <span class="label label-default">{{ app.clandetails.points }} <i class="fa fa-trophy fa-lg text-warning"></i></span>
+    </p>
+  </div>
+  <div class="col-lg-10 col-lg-offset-1 col-md-12 col-md-offset-0">
+    <p>{{ app.clandetails.description }}</p>
+  </div>
+
+</div>
+
+
 
   <table id="members" class="table table-hover table-responsive text-center">
     <thead>

@@ -48,8 +48,8 @@ foreach ($clan->getAllMembers() as $clanmember)
 
 }
 
-$avgtroph = $tottroph / $clan->getMemberCount();
-$avglvl = $totlvl / $clan->getMemberCount();
+$avgtroph = round($tottroph / $clan->getMemberCount(), 0;
+$avglvl = round($totlvl / $clan->getMemberCount(), 0);
 
 $clandetails = [
   "badgesm" =>  $clan->getBadgeUrl("small"),
