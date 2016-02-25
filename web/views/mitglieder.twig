@@ -20,7 +20,7 @@
       <small>Leveldurchschnitt </small><span class="hidden-xs"><br/></span>
       <span class="fa-stack fa-1x">
           <i class="fa fa-certificate fa-stack-2x text-primary"></i>
-            <strong class="fa-stack-1x certificate-text center-text-lg">{{ app.clandetails.avglvl }}</strong>
+            <strong class="fa-stack-1x certificate-text-lg center-text">{{ app.clandetails.avglvl }}</strong>
             </span>
     </p>
   </div>
@@ -62,7 +62,7 @@
   {% for rank,mem in app.clanmem %}
       <tr>
         <td class="hidden-xs"></td>
-        <td class="hidden-xs">
+        <td class="hidden-xs hidden-sm">
           {% if mem.prevrank == 0 %}
           <small><i class="fa fa-asterisk text-primary"></i></small>
           {% elseif mem.prevrank == mem.rank %}
