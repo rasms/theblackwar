@@ -48,7 +48,7 @@ foreach ($clan->getAllMembers() as $clanmember)
 
 }
 
-$avgtroph = round($tottroph / $clan->getMemberCount(), 0;
+$avgtroph = round($tottroph / $clan->getMemberCount(), 0);
 $avglvl = round($totlvl / $clan->getMemberCount(), 0);
 
 $clandetails = [
