@@ -12,18 +12,10 @@ $app['debug'] = false;
 
 
 $clan = new CoC_Clan("#QVQRYYG");
-$clandetails = [
-  "badgesm" =>  $clan->getBadgeUrl("small"),
-  "badgemd" =>  $clan->getBadgeUrl("medium"),
-  "badgelg" =>  $clan->getBadgeUrl("large"),
-  "name" => $clan->getName(),
-  "level" => $clan->getLevel(),
-  "description" => $clan->getDescription(),
-  "wins" => $clan->getWarWins(),
-  "points" => $clan->getPoints(),
-  "freq" => $clan->getWarFrequency(),
-  "membercount" => $clan->getMemberCount(),
-];
+
+
+$tottroph = 0;
+$totlvl = 0;
 
 foreach ($clan->getAllMembers() as $clanmember)
 {
@@ -34,6 +26,8 @@ foreach ($clan->getAllMembers() as $clanmember)
 
 	$ratio = $member->getDonations() / $donationsReceivedCalc;
 
+  $tottroph = $tottroph + $member->getTrophies();
+  $totlvl = $totlvl + $member->getLevel();
 
   $clanmem[$member->getClanRank()] = [
     "rank" => $member->getClanRank(),
@@ -54,6 +48,23 @@ foreach ($clan->getAllMembers() as $clanmember)
 
 }
 
+$avgtroph = $tottroph / $clan->getMemberCount();
+$avglvl = $totlvl / $clan->getMemberCount();
+
+$clandetails = [
+  "badgesm" =>  $clan->getBadgeUrl("small"),
+  "badgemd" =>  $clan->getBadgeUrl("medium"),
+  "badgelg" =>  $clan->getBadgeUrl("large"),
+  "name" => $clan->getName(),
+  "level" => $clan->getLevel(),
+  "description" => $clan->getDescription(),
+  "wins" => $clan->getWarWins(),
+  "points" => $clan->getPoints(),
+  "freq" => $clan->getWarFrequency(),
+  "membercount" => $clan->getMemberCount(),
+  "avgtroph" => $avgtroph,
+  "avglvl" => $avglvl,
+];
 
 $app['clandetails'] = $clandetails;
 $app['clanmem'] = $clanmem;

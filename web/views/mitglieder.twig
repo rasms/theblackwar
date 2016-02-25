@@ -7,6 +7,10 @@
 <div class="row">
 <h1>Mitglieder</h1>
 
+{{ app.clandetails.membercount }}
+{{ app.clandetails.avgtroph }}
+{{ app.clandetails.avglvl }}
+
   <table id="members" class="table table-hover table-responsive text-center">
     <thead>
     <tr>
@@ -29,12 +33,14 @@
       <tr>
         <td class="hidden-xs"></td>
         <td class="hidden-xs">
-          {% if mem.prevrank == mem.rank %}
-          <small><i class="fa fa-minus"></small>
+          {% if mem.prevrank == 0 %}
+          <small><i class="fa fa-asterisk text-primary"></i></small>
+          {% elseif mem.prevrank == mem.rank %}
+          <small><i class="fa fa-minus text-muted"></i></small>
           {% elseif mem.prevrank > mem.rank %}
           <small><span class="text-success"><i class="fa fa-caret-up"></i> ({{ mem.prevrank - mem.rank }})</span></small>
           {% elseif mem.prevrank < mem.rank %}
-          <small><span class="text-danger"><i class="fa fa-caret-down"></i> ({{ mem.prevrank - mem.rank }})</span></small>
+          <small><span class="text-danger"><i class="fa fa-caret-down"></i> ({{ mem.rank - mem.prevrank }})</span></small>
           {% endif %}
 
         </td>
