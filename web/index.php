@@ -22,6 +22,7 @@ $clandetails = [
   "wins" => $clan->getWarWins(),
   "points" => $clan->getPoints(),
   "freq" => $clan->getWarFrequency(),
+  "membercount" => $clan->getMemberCount(),
 ];
 
 foreach ($clan->getAllMembers() as $clanmember)
@@ -36,6 +37,7 @@ foreach ($clan->getAllMembers() as $clanmember)
 
   $clanmem[$member->getClanRank()] = [
     "rank" => $member->getClanRank(),
+    "prevrank" => $member->getPreviousClanRank(),
     "name" => $member->getName(),
     "role" => $member->getRole(),
     "trophies" => $member->getTrophies(),

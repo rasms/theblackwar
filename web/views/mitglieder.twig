@@ -11,6 +11,7 @@
     <thead>
     <tr>
       <th class="text-center hidden-xs">#</th>
+      <th class="text-center hidden-xs"><i class="fa fa-history"></i></th>
       <th class="text-center">Level</th>
       <th class="text-center hidden-xs">Liga</th>
       <th class="text-center">Name</th>
@@ -27,6 +28,16 @@
   {% for rank,mem in app.clanmem %}
       <tr>
         <td class="hidden-xs"></td>
+        <td class="hidden-xs">
+          {% if mem.prevrank == mem.rank %}
+          <small><i class="fa fa-minus"></small>
+          {% if mem.prevrank > mem.rank %}
+          <small><span class="text-success"><i class="fa fa-caret-up"></i> ({{ mem.prevrank - mem.rank }})</span></small>
+          {% if mem.prevrank < mem.rank %}
+          <small><span class="text-danger"><i class="fa fa-caret-down"></i> ({{ mem.prevrank - mem.rank }})</span></small>
+          {% endif %}
+
+        </td>
         <td><span class="fa-stack fa-1x">
             <i class="fa fa-certificate fa-stack-2x text-primary"></i>
               <strong class="fa-stack-1x certificate-text center-text">{{ mem.level }}</strong>
