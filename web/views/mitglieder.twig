@@ -31,9 +31,9 @@
         <td class="hidden-xs">
           {% if mem.prevrank == mem.rank %}
           <small><i class="fa fa-minus"></small>
-          {% if mem.prevrank > mem.rank %}
+          {% elseif mem.prevrank > mem.rank %}
           <small><span class="text-success"><i class="fa fa-caret-up"></i> ({{ mem.prevrank - mem.rank }})</span></small>
-          {% if mem.prevrank < mem.rank %}
+          {% elseif mem.prevrank < mem.rank %}
           <small><span class="text-danger"><i class="fa fa-caret-down"></i> ({{ mem.prevrank - mem.rank }})</span></small>
           {% endif %}
 
