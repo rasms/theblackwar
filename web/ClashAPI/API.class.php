@@ -33,6 +33,9 @@ private $_apiKey = null;
 		if ($redis->exists($url)) {
 			$output = $redis->get($url);
 		}
+		elseif (($redis->exists('apicrash')) && ($redis->exists($lt))) {
+			$output = $redis->get($lt);
+		}
 		else {
 		    // Fetch filters from Stackla REST API
 				// File is too old, refresh cache
@@ -48,15 +51,16 @@ private $_apiKey = null;
 				curl_close($ch);
 		    // Cache response for the next 1 hour if not empty
 				if (($retcode == 200) && (!empty($output))){
-					$redis->setEx($url, 60, $output);
+					$redis->setEx($url, 3600, $output);
 					$redis->set($lt, $output);
 					$redis->persist($lt);
 				}
 				elseif ($redis->exists($lt)) {
+					$redis->setEx('apicrash', 3600 , '');
 					$output = $redis->get($lt);
 				}
 				else {
-					//exit('Clash of Clans API nicht verfügbar. Bitte probiere es später nocheinmal.');
+					exit('Clash of Clans API nicht verfügbar. Bitte probiere es später nocheinmal.');
 				}
 		}
 
