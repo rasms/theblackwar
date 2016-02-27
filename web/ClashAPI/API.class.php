@@ -28,7 +28,7 @@ private $_apiKey = null;
 		$proxy = getenv('FIXIE_URL');
 
 		$redis = new Predis\Client(getenv('REDIS_URL'));
-
+		$lt = $url.'lt';
 
 		if ($redis->exists($url)) {
 			$output = $redis->get($url);
@@ -49,10 +49,11 @@ private $_apiKey = null;
 		    // Cache response for the next 1 hour if not empty
 				if (($retcode == 200)&&(!empty($output))){
 					$redis->setEx($url, 3600, $output);
-					$redis->set($url.'lt',$output);
+					$redis->set($lt, $output);
+					$redis->persist($lt);
 				}
-				elseif ($redis->exists($url.'lt')) {
-					$output = $redis->get($url.'lt');
+				elseif ($redis->exists($lt)) {
+					$output = $redis->get($lt);
 				}
 				else {
 					exit('Clash of Clans API nicht verfügbar. Bitte probiere es später nocheinmal.');
