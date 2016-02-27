@@ -27,38 +27,13 @@ private $_apiKey = null;
 		$this->_apiKey = getenv('COC_KEY');
 		$proxy = getenv('FIXIE_URL');
 
+		$redis = new Predis\Client(getenv('REDIS_URL'));
 
-		// create a new persistent client
-		$m = new Memcached("memcached_pool");
-		$m->setOption(Memcached::OPT_BINARY_PROTOCOL, TRUE);
 
-		// some nicer default options
-		$m->setOption(Memcached::OPT_NO_BLOCK, TRUE);
-		$m->setOption(Memcached::OPT_AUTO_EJECT_HOSTS, TRUE);
-		$m->setOption(Memcached::OPT_CONNECT_TIMEOUT, 2000);
-		$m->setOption(Memcached::OPT_POLL_TIMEOUT, 2000);
-		$m->setOption(Memcached::OPT_RETRY_TIMEOUT, 2);
-
-		// setup authentication
-		$m->setSaslAuthData( getenv("MEMCACHIER_USERNAME")
-		                   , getenv("MEMCACHIER_PASSWORD") );
-
-		// We use a consistent connection to memcached, so only add in the
-		// servers first time through otherwise we end up duplicating our
-		// connections to the server.
-		if (!$m->getServerList()) {
-		    // parse server config
-		    $servers = explode(",", getenv("MEMCACHIER_SERVERS"));
-		    foreach ($servers as $s) {
-		        $parts = explode(":", $s);
-		        $m->addServer($parts[0], $parts[1]);
-		    }
+		if ($redis->exists($url);) {
+			$output = $redis->get($url);
 		}
-
-		if ($m->get($url)) {
-		    // Get cached value
-		    $output = $m->get($url);
-		} else {
+		else {
 		    // Fetch filters from Stackla REST API
 				// File is too old, refresh cache
 				$ch = curl_init();
@@ -72,23 +47,11 @@ private $_apiKey = null;
 				curl_close($ch);
 		    // Cache response for the next 1 hour if not empty
 				if (!empty($output)){
-					$m->set($url, $output, time() + 3600);
+					$redis->setEx($key, 3600, $output);
 				}
 		}
 
 
-
-		//
-		// $ch = curl_init();
-		// curl_setopt($ch, CURLOPT_URL, $url);
-		// curl_setopt($ch, CURLOPT_PROXY, $proxy);
-		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		// curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-  	// 		'authorization: Bearer '.$this->_apiKey //
-		// ));
-		// $output = curl_exec($ch);
-		// curl_close($ch);
-		//
 		 return $output;
 	}
 
