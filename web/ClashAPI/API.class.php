@@ -47,7 +47,8 @@ private $_apiKey = null;
 				curl_close($ch);
 		    // Cache response for the next 1 hour if not empty
 				if (!empty($output)){
-					$redis->setEx($key, 3600, $output);
+					$redis->setEx($url, 3600, $output);
+					//$redis->set($url.'lt',$output);
 				}
 		}
 
