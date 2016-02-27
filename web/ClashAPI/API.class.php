@@ -30,7 +30,7 @@ private $_apiKey = null;
 		$redis = new Predis\Client(getenv('REDIS_URL'));
 
 
-		if ($redis->exists($url);) {
+		if ($redis->exists($url)) {
 			$output = $redis->get($url);
 		}
 		else {
