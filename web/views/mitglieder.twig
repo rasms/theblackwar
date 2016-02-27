@@ -17,7 +17,7 @@
   </div>
   <div class="col-sm-6 col-md-3">
     <p>
-      <small>Leveldurchschnitt </small><span class="hidden-xs"><br/></span>
+      <small>Durchschnittliches Level </small><span class="hidden-xs"><br/></span>
       <span class="fa-stack fa-1x">
           <i class="fa fa-certificate fa-stack-2x text-primary"></i>
             <strong class="fa-stack-1x certificate-text-lg center-text">{{ app.clandetails.avglvl }}</strong>
@@ -26,7 +26,7 @@
   </div>
   <div class="col-sm-6 col-md-3">
     <p>
-    <small>Pokaldurchschnitt </small><span class="hidden-xs"><br/></span>
+    <small>Durchschnittliche Pokale </small><span class="hidden-xs"><br/></span>
         <span class="label label-default">{{ app.clandetails.avgtroph }} <i class="fa fa-trophy fa-lg text-warning"></i></span>
   </p>
   </div>
@@ -64,7 +64,7 @@
         <td class="hidden-xs"></td>
         <td class="hidden-xs hidden-sm">
           {% if mem.prevrank == 0 %}
-          <small><i class="fa fa-asterisk text-primary"></i></small>
+          <small><span class="text-info">Neu</span></small>
           {% elseif mem.prevrank == mem.rank %}
           <small><i class="fa fa-minus text-muted"></i></small>
           {% elseif mem.prevrank > mem.rank %}
