@@ -44,11 +44,18 @@ private $_apiKey = null;
 						'authorization: Bearer '.$this->_apiKey //
 				));
 				$output = curl_exec($ch);
+				$retcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 				curl_close($ch);
 		    // Cache response for the next 1 hour if not empty
-				if (!empty($output)){
+				if (($retcode == 200)&&(!empty($output))){
 					$redis->setEx($url, 3600, $output);
-					//$redis->set($url.'lt',$output);
+					$redis->set($url.'lt',$output);
+				}
+				elseif ($redis->exists($url.'lt')) {
+					$output = $redis->get($url.'lt');
+				}
+				else {
+					exit('Clash of Clans API nicht verfügbar. Bitte probiere es später nocheinmal.');
 				}
 		}
 
