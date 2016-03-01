@@ -5,8 +5,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 date_default_timezone_set('Europe/Berlin');
 
-//$redis = new Predis\Client(getenv('REDIS_URL'));
-
 $app = new Silex\Application();
 $app['debug'] = false;
 
@@ -27,7 +25,7 @@ $app->register(new Predis\Silex\ClientServiceProvider(), [
 
 
 $clandetails = $app['predis']->get('clandetails');
-$clandetails = json_decode($clandetails);
+$clandetails = unserialize($clandetails);
 $app['clandetails'] = $clandetails;
 
 
@@ -39,7 +37,7 @@ $app->get('/', function() use($app) {
 
 $app->get('/mitglieder', function() use($app) {
 	$clanmem = $app['predis']->get('clanmem');
-	$clanmem = json_decode($clanmem);
+	$clanmem = unserialize($clanmem);
 	$app['clanmem'] = $clanmem;
   $app['monolog']->addDebug('logging output.');
 

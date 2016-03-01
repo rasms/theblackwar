@@ -7,6 +7,15 @@ date_default_timezone_set('Europe/Berlin');
 
 $redis = new Predis\Client(getenv('REDIS_URL'));
 
+if ($redis->exists('timer')) {
+
+  echo 'Just wait another hour...';
+
+}
+else {
+
+$timestamp = date("d.m.Y - H:i");
+
 $clan = new CoC_Clan("#QVQRYYG");
 
 
@@ -60,7 +69,11 @@ $clandetails = [
   "membercount" => $clan->getMemberCount(),
   "avgtroph" => $avgtroph,
   "avglvl" => $avglvl,
+  "timestamp" => $timestamp,
 ];
 
-$redis->set('clandetails', json_encode($clandetails));
-$redis->set('clanmem', json_encode($clanmem));
+$redis->set('clandetails', serialize($clandetails));
+$redis->set('clanmem', serialize($clanmem));
+$redis->setEx('timer', 5400, '');
+
+}
