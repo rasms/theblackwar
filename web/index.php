@@ -5,30 +5,31 @@ use Symfony\Component\HttpFoundation\Response;
 
 date_default_timezone_set('Europe/Berlin');
 
-$redis = new Predis\Client(getenv('REDIS_URL'));
+//$redis = new Predis\Client(getenv('REDIS_URL'));
 
 $app = new Silex\Application();
 $app['debug'] = false;
 
-
-$clandetails = $redis->get('clandetails');
-$clanmem = $redis->get('clanmem');
-$clandetails = json_decode($clandetails);
-$clanmem = json_decode($clanmem);
-
-$app['clandetails'] = $clandetails;
-$app['clanmem'] = $clanmem;
 
 // Register the monolog logging service
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
   'monolog.logfile' => 'php://stderr',
 ));
 
-
 // Register view rendering
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/views',
 ));
+
+$app->register(new Predis\Silex\ClientServiceProvider(), [
+    'predis.parameters' => getenv('REDIS_URL'),
+]);
+
+
+$clandetails = $app['predis']->get('clandetails');
+$clandetails = json_decode($clandetails);
+$app['clandetails'] = $clandetails;
+
 
 // Our web handlers
 $app->get('/', function() use($app) {
@@ -37,7 +38,11 @@ $app->get('/', function() use($app) {
 });
 
 $app->get('/mitglieder', function() use($app) {
+	$clanmem = $app['predis']->get('clanmem');
+	$clanmem = json_decode($clanmem);
+	$app['clanmem'] = $clanmem;
   $app['monolog']->addDebug('logging output.');
+
   return $app['twig']->render('mitglieder.twig');
 });
 

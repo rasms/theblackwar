@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a2b37fdd11eacb903abb25d7977d386c",
-    "content-hash": "1bc094ba91385fbb9a67805a659d5984",
+    "hash": "540b5e66d340d9faa826c6eb796c7129",
+    "content-hash": "fbd0c528729642be4737f58cf1a87515",
     "packages": [
         {
             "name": "monolog/monolog",
@@ -179,6 +179,54 @@
                 "redis"
             ],
             "time": "2015-07-30 18:34:15"
+        },
+        {
+            "name": "predis/service-provider",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nrk/PredisServiceProvider.git",
+                "reference": "c1f11793282f141854033b86dfdfc8ee150d9863"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nrk/PredisServiceProvider/zipball/c1f11793282f141854033b86dfdfc8ee150d9863",
+                "reference": "c1f11793282f141854033b86dfdfc8ee150d9863",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "predis/predis": "~1.0",
+                "silex/silex": "~1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Predis\\Silex\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniele Alessandri",
+                    "email": "suppakilla@gmail.com",
+                    "homepage": "http://clorophilla.net"
+                }
+            ],
+            "description": "Predis service provider for the Silex microframework",
+            "homepage": "https://github.com/nrk/PredisServiceProvider",
+            "keywords": [
+                "predis",
+                "redis",
+                "silex"
+            ],
+            "time": "2014-08-06 09:57:30"
         },
         {
             "name": "psr/log",
@@ -816,8 +864,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.3.2",
-        "ext-memcached": "*"
+        "php": ">=5.3.2"
     },
     "platform-dev": []
 }

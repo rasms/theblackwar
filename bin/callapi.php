@@ -62,6 +62,5 @@ $clandetails = [
   "avglvl" => $avglvl,
 ];
 
-
 $redis->set('clandetails', json_encode($clandetails));
 $redis->set('clanmem', json_encode($clanmem));
