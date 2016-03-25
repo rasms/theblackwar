@@ -7,7 +7,7 @@
 class CoC_Clan
 {
 	protected $api;
-	protected $tag; 
+	protected $tag;
 	protected $clan = NULL;
 
 	/**
@@ -17,7 +17,7 @@ class CoC_Clan
 	 * @param $tagOrClass
 	 * @param (optional) $isTag
 	 */
-	public function __construct($tagOrClass) 
+	public function __construct($tagOrClass)
 	{
 		$this->api = new ClashOfClans();
 		if(is_string($tagOrClass))
@@ -29,9 +29,9 @@ class CoC_Clan
 		{
 			$this->clan = $tagOrClass;
 		}
-		
+
    	}
-	
+
    	protected function getClan()
    	{
    		if($this->clan == NULL)
@@ -90,7 +90,7 @@ class CoC_Clan
 	{
 		return $this->getClan()->location->id;
 	}
-	
+
 	/**
 	 * Gets the clan's location.
 	 *
@@ -103,7 +103,7 @@ class CoC_Clan
 
 	/**
 	 * Get's the URL to the clan badge in the given size.
-	 * 
+	 *
 	 * @param (optional) $size ("small", "medium", "large")
 	 * @return string, URL to the picture
 	 */
@@ -112,7 +112,7 @@ class CoC_Clan
 		switch ($size)
 		{
 			case "small":
-				return $this->getClan()->badgeUrls->small; 
+				return $this->getClan()->badgeUrls->small;
 				break;
 			case "medium":
 				return $this->getClan()->badgeUrls->medium;
@@ -124,7 +124,7 @@ class CoC_Clan
 				return $this->getClan()->badgeUrls->large; //return the largest because it can be resized using HTML
 				break;
 		}
-		
+
 	}
 
 	/**
@@ -155,6 +155,16 @@ class CoC_Clan
 	public function getWarWins()
 	{
 		return $this->getClan()->warWins;
+	}
+
+	/**
+	 * Gets the clan's war win streak
+	 *
+	 * @return int, streak
+	 */
+	public function getWarWinStreak()
+	{
+		return $this->getClan()->warWinStreak;
 	}
 
 	/**
@@ -224,5 +234,5 @@ class CoC_Clan
 			}
 		}
 		return 0;
-	} 
+	}
 };

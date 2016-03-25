@@ -64,6 +64,7 @@ $clandetails = [
   "level" => $clan->getLevel(),
   "description" => $clan->getDescription(),
   "wins" => $clan->getWarWins(),
+  "streak" => $clan->getWarWinStreak(),
   "points" => $clan->getPoints(),
   "freq" => $clan->getWarFrequency(),
   "membercount" => $clan->getMemberCount(),
