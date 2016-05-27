@@ -19,29 +19,29 @@
     <div class="panel panel-default">
     {% endif %}
       <div class="panel-body">
-        <div class="col-sm-12 col-md-5 col-md-offset-0 col-lg-5 col-lg-offset-1 text-right">
-          <small>{{ log.cdestruct }} %</small>
-          <span class="label label-default fa-lg"><i class="fa fa-star text-warning"></i>{{ log.cstars }}</span>
-          <span class="member">{{ log.cname }}</span>
+        <div class="col-sm-12 col-md-5 text-right-md-up">
+          <small>{{ log.cdestruct }} %</small>&nbsp;&nbsp;
+          <span class="label label-default warstars"><i class="fa fa-star text-warning"></i>{{ log.cstars }}</span>&nbsp;&nbsp;
+          <span class="member">{{ log.cname }}</span>&nbsp;&nbsp;
           <span class="fa-stack fa-1x">
               <i class="fa fa-certificate fa-stack-2x text-primary"></i>
                 <strong class="fa-stack-1x certificate-text center-text">{{ log.clvl }}</strong>
-          </span>
-          <img src="{{ log.cbadgesm }}" alt="{{ log.cname }}-Logo"/>
+          </span>&nbsp;&nbsp;
+          <img src="{{ log.cbadgesm }}" alt="{{ log.cname }}-Logo" class="warbadge"/>
         </div>
-        <div class="col-sm-12 col-md-2 col-lg-1 text-center">
+        <div class="col-sm-12 col-md-2 text-center">
           <p>
           {{ log.size }} vs. {{ log.size }}
           </p>
         </div>
         <div class="col-sm-12 col-md-5 text-left">
-          <img src="{{ log.obadgesm }}" alt="{{ log.oname }}-Logo"/>
+          <img src="{{ log.obadgesm }}" alt="{{ log.oname }}-Logo" class="warbadge"/>&nbsp;&nbsp;
           <span class="fa-stack fa-1x">
               <i class="fa fa-certificate fa-stack-2x text-primary"></i>
                 <strong class="fa-stack-1x certificate-text center-text">{{ log.olvl }}</strong>
-          </span>
-          <span class="member">{{ log.oname }}</span>
-          <span class="label label-default fa-lg"><i class="fa fa-star text-warning"></i>{{ log.ostars }}</span>
+          </span>&nbsp;&nbsp;
+          <span class="member">{{ log.oname }}</span>&nbsp;&nbsp;
+          <span class="label label-default warstars"><i class="fa fa-star text-warning"></i>{{ log.ostars }}</span>&nbsp;&nbsp;
           <small>{{ log.odestruct }} %</small>
         </div>
       </div>

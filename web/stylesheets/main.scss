@@ -61,7 +61,6 @@ h1, h2, h3, h4, h5, h6{
   }
 }
 
-
 /*
  * Affix and center
  */
@@ -88,13 +87,23 @@ h1, h2, h3, h4, h5, h6{
   }
 }
 
+.text-right-md-up {
+  text-align: left;
+}
+
 @media (min-width: 992px) {
   .masthead,
   .mastfoot,
   .cover-container {
     width: 700px;
   }
+
+  .text-right-md-up {
+    text-align: right;
+  }
 }
+
+
 
 .certificate-text {
   color: #fff;
@@ -121,6 +130,14 @@ font-family: 'Alegreya', serif;
 
 .trophies {
   font-size: 95%;
+}
+
+.warstars {
+  font-size: 2rem;
+}
+
+.warbadge {
+  width: 5rem;
 }
 
 footer {
