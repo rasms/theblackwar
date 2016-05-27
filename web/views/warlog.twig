@@ -8,37 +8,40 @@
 
 <h1>WarLog</h1>
 
+{% for log in app.warlog %}
+<div class="col-sm-12">
 
+  {% if log.result == 'win' %}
+  <div class="panel panel-success">
+  {% elseif log.result == 'lose' %}
+  <div class="panel panel-warning">
+  {% else %}
+  <div class="panel panel-default">
+  {% endif %}
+    <div class="panel-body">
+      <div class="col-sm-12 col-md-5">
+        <small>{{ log.cdestruct }} %</small>
+        <i class="fa fa-star"></i>{{ log.cstars }}
+        <span class="member">{{ log.cname }}</span>
+        <img src="{{ log.cbadgesm }}" alt="{{ log.cname }}-Logo"/>
+        {{ log.clvl }}
+      </div>
+      <div class="col-sm-12 col-md-2">
+        {{ log.size }} vs. {{ log.size }}
+      </div>
+      <div class="col-sm-12 col-md-5">
+        {{ log.olvl }}
+        <img src="{{ log.obadgesm }}" alt="{{ log.oname }}-Logo"/>
+        <span class="member">{{ log.oname }}</span>
+        <i class="fa fa-star"></i>{{ log.ostars }}
+        <small>{{ log.odestruct }} %</small>
+      </div>
 
-  <table id="warlog" class="table table-hover table-responsive text-center">
-    <thead>
-    <tr>
-      <th class="text-center hidden-xs">#</th>
-      <th class="text-center">Ausgang</th>
-      <th class="text-center hidden-xs">Size</th>
-      <th class="text-center">Gegner</th>
-      <th class="text-center">Gegner Level</th>
-      <th class="text-center">Angriffe</th>
-      <th class="text-center">Sterne</th>
-      <th class="text-center">Zerstörung</th></tr>
-    </thead>
-    <tbody>
+    </div>
+  </div>
+</div>
+{% endfor %}
 
-  {% for log in app.warlog %}
-      <tr>
-        <td class="hidden-xs"></td>
-        <td>{{ log.result }}</td>
-        <td class="hidden-xs">{{ log.size }}</td>
-        <td><img src="{{ log.obadgesm }}" alt="{{ log.oname }}"/> {{ log.oname }}</td>
-        <td>{{ log.olvl }}        </td>
-        <td>{{ log.cattacks }}</td>
-        <td>{{ log.cstars }}</td>
-        <td>{{ log.cdestruct }}</td>
-
-      </tr>
-  {% endfor %}
-    </tbody>
-  </table>
 <span class="pull-right text-muted"><small>Stand: {{ app.clandetails.timestamp }} Uhr</small></span>
 
 </div>
