@@ -2,17 +2,50 @@
 
 class CoC_Warlog
 {
-	protected $warlogObj;
+	protected $api;
+	protected $tag;
+	protected $log = NULL;
 
 	/**
-	 * Constructor of CoC_Member
+	 * Constructor of CoC_Clan
+	 * Either pass the clan tag or a stdClass containing all clan information.
 	 *
-	 * @param $warlogObj, obtained by Clan.class.php
+	 * @param $tagOrClass
+	 * @param (optional) $isTag
 	 */
-	public function __construct($warlogObj)
+	public function __construct($tagOrClass)
 	{
-		$this->warlogObj = $warlogObj;
-	}
+		$this->api = new ClashOfClans();
+		if(is_string($tagOrClass))
+		{
+			$this->tag = $tagOrClass;
+			$this->getWarlog();
+		}
+		else
+		{
+			$this->log = $tagOrClass;
+		}
+
+		}
+
+		protected function getWarlog()
+		{
+			if($this->log == NULL)
+		{
+			$this->log = $this->api->getClanWarlogByTag($this->tag);
+		}
+		return $this->log;
+		}
+
+		public function getTag()
+		{
+			return $this->tag;
+		}
+
+		public function getItems()
+		{
+			return $this->getWarlog()->items;
+		}
 
 	/**
 	 * Gets the members name
@@ -21,7 +54,7 @@ class CoC_Warlog
 	 */
 	public function getResult()
 	{
-		return $this->warlogObj->result;
+		return $this->getWarlog()->result;
 	}
 
 	/**
@@ -31,7 +64,7 @@ class CoC_Warlog
 	 */
 	public function getEndtime()
 	{
-		return $this->warlogObj->endTime;
+		return $this->getWarlog()->endTime;
 	}
 
 	/**
@@ -41,7 +74,7 @@ class CoC_Warlog
 	 */
 	public function getTeamsize()
 	{
-		return $this->warlogObj->teamSize;
+		return $this->getWarlog()->teamSize;
 	}
 
 	/**
@@ -51,39 +84,39 @@ class CoC_Warlog
 	 */
 	public function getClanTag()
 	{
-		return $this->warlogObj->clan->tag;
+		return $this->getWarlog()->clan->tag;
 	}
 
 	public function getClanName()
 	{
-		return $this->warlogObj->clan->name;
+		return $this->getWarlog()->clan->name;
 	}
 
 
 	public function getClanLevel()
 	{
-		return $this->warlogObj->clan->clanLevel;
+		return $this->getWarlog()->clan->clanLevel;
 	}
 
 
 	public function getClanAttacks()
 	{
-		return $this->warlogObj->clan->attacks;
+		return $this->getWarlog()->clan->attacks;
 	}
 
 	public function getClanStars()
 	{
-		return $this->warlogObj->clan->stars;
+		return $this->getWarlog()->clan->stars;
 	}
 
 	public function getClanDestruction()
 	{
-		return $this->warlogObj->clan->destructionPercentage;
+		return $this->getWarlog()->clan->destructionPercentage;
 	}
 
 	public function getClanExp()
 	{
-		return $this->warlogObj->clan->expEarned;
+		return $this->getWarlog()->clan->expEarned;
 	}
 
 	public function getClanBadgeUrl($size = "") //small, large, medium.
@@ -91,16 +124,16 @@ class CoC_Warlog
 		switch ($size)
 		{
 			case "small":
-				return $this->warlogObj->clan->badgeUrls->small;
+				return $this->getWarlog()->clan->badgeUrls->small;
 				break;
 			case "medium":
-				return $this->warlogObj->clan->badgeUrls->medium;
+				return $this->getWarlog()->clan->badgeUrls->medium;
 				break;
 			case "large":
-				return $this->warlogObj->clan->badgeUrls->large;
+				return $this->getWarlog()->clan->badgeUrls->large;
 				break;
 			default:
-				return $this->warlogObj->clan->badgeUrls->large; //return the largest because it can be resized using HTML
+				return $this->getWarlog()->clan->badgeUrls->large; //return the largest because it can be resized using HTML
 				break;
 		}
 
@@ -115,39 +148,39 @@ class CoC_Warlog
 	 */
 	public function getOpponentTag()
 	{
-		return $this->warlogObj->opponent->tag;
+		return $this->getWarlog()->opponent->tag;
 	}
 
 	public function getOpponentName()
 	{
-		return $this->warlogObj->opponent->name;
+		return $this->getWarlog()->opponent->name;
 	}
 
 
 	public function getOpponentLevel()
 	{
-		return $this->warlogObj->opponent->clanLevel;
+		return $this->getWarlog()->opponent->clanLevel;
 	}
 
 
 	public function getOpponentAttacks()
 	{
-		return $this->warlogObj->opponent->attacks;
+		return $this->getWarlog()->opponent->attacks;
 	}
 
 	public function getOpponentStars()
 	{
-		return $this->warlogObj->opponent->stars;
+		return $this->getWarlog()->opponent->stars;
 	}
 
 	public function getOpponentDestruction()
 	{
-		return $this->warlogObj->opponent->destructionPercentage;
+		return $this->getWarlog()->opponent->destructionPercentage;
 	}
 
 	public function getOpponentExp()
 	{
-		return $this->warlogObj->opponent->expEarned;
+		return $this->getWarlog()->opponent->expEarned;
 	}
 
 	public function getOpponentBadgeUrl($size = "") //small, large, medium.
@@ -155,16 +188,16 @@ class CoC_Warlog
 		switch ($size)
 		{
 			case "small":
-				return $this->warlogObj->opponent->badgeUrls->small;
+				return $this->getWarlog()->opponent->badgeUrls->small;
 				break;
 			case "medium":
-				return $this->warlogObj->opponent->badgeUrls->medium;
+				return $this->getWarlog()->opponent->badgeUrls->medium;
 				break;
 			case "large":
-				return $this->warlogObj->opponent->badgeUrls->large;
+				return $this->getWarlog()->opponent->badgeUrls->large;
 				break;
 			default:
-				return $this->warlogObj->opponent->badgeUrls->large; //return the largest because it can be resized using HTML
+				return $this->getWarlog()->opponent->badgeUrls->large; //return the largest because it can be resized using HTML
 				break;
 		}
 
