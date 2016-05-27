@@ -11,7 +11,6 @@
 {% for log in app.warlog %}
 <div class="row">
   <div class="col-sm-12">
-
     {% if log.result == 'win' %}
     <div class="panel panel-success">
     {% elseif log.result == 'lose' %}
@@ -20,7 +19,7 @@
     <div class="panel panel-default">
     {% endif %}
       <div class="panel-body">
-        <div class="col-sm-12 col-md-5 text-right">
+        <div class="col-sm-12 col-md-5 col-md-offset-0 col-lg-5 col-lg-offset-1 text-right">
           <small>{{ log.cdestruct }} %</small>
           <span class="label label-default fa-lg"><i class="fa fa-star text-warning"></i>{{ log.cstars }}</span>
           <span class="member">{{ log.cname }}</span>
@@ -29,10 +28,8 @@
                 <strong class="fa-stack-1x certificate-text center-text">{{ log.clvl }}</strong>
           </span>
           <img src="{{ log.cbadgesm }}" alt="{{ log.cname }}-Logo"/>
-
-
         </div>
-        <div class="col-sm-12 col-md-2 text-center">
+        <div class="col-sm-12 col-md-2 col-lg-1 text-center">
           <p>
           {{ log.size }} vs. {{ log.size }}
           </p>
@@ -47,7 +44,6 @@
           <span class="label label-default fa-lg"><i class="fa fa-star text-warning"></i>{{ log.ostars }}</span>
           <small>{{ log.odestruct }} %</small>
         </div>
-
       </div>
     </div>
   </div>

@@ -6,50 +6,55 @@
     <img src="{{ app.clandetails.badgemd }}"/>
     <h1>{{ app.clandetails.name }} </h1>
 <div class="row">
-  <div class="col-sm-6 col-sm-offset-0 col-md-2 col-md-offset-1">
+  <div class="col-sm-12 col-md-3">
   <p>
     <small>Clantag </small><span class="hidden-xs"><br/></span>
     <span class="label label-default">#QVQRYYG</span>
   </p>
   </div>
-  <div class="col-sm-6 col-md-2">
+  <div class="col-sm-12 col-md-3">
     <p>
     <small>Punkte </small><span class="hidden-xs"><br/></span>
     <span class="label label-default">{{ app.clandetails.points }} <i class="fa fa-trophy fa-lg text-warning"></i></span>
     </p>
   </div>
-  <div class="col-sm-4 col-md-2">
+  <div class="col-sm-12 col-md-3">
     <p>
       <small>Clanlevel </small><span class="hidden-xs"><br/></span>
       <span class="label label-default">{{ app.clandetails.level }}</span>
     </p>
   </div>
-
-  <div class="col-sm-4 col-md-2">
+  <div class="col-sm-12 col-md-3">
     <p>
     <small>Siegesserie </small><span class="hidden-xs"><br/></span>
     <span class="label label-default">{{ app.clandetails.streak }}</span>
   </p>
   </div>
-  <div class="col-sm-4 col-md-2">
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-3">
+    ClanWar:
+  </div>
+  <div class="col-sm-12 col-md-3">
     <p>
-    <small>War Siege </small><span class="hidden-xs"><br/></span>
-    <span class="label label-default">{{ app.clandetails.wins }}</span>
+    <small>Siege </small><span class="hidden-xs"><br/></span>
+    <span class="label label-success">{{ app.clandetails.wins }}</span>
   </p>
   </div>
-  <div class="col-sm-4 col-md-2">
+  <div class="col-sm-12 col-md-3">
     <p>
-    <small>War Niederlagen </small><span class="hidden-xs"><br/></span>
-    <span class="label label-default">{{ app.clandetails.ties }}</span>
+    <small>Niederlagen </small><span class="hidden-xs"><br/></span>
+    <span class="label label-danger">{{ app.clandetails.losses }}</span>
   </p>
   </div>
-  <div class="col-sm-4 col-md-2">
+  <div class="col-sm-4 col-md-3">
     <p>
-    <small>War Unentschieden </small><span class="hidden-xs"><br/></span>
-    <span class="label label-default">{{ app.clandetails.losses }}</span>
+    <small>Unentschieden </small><span class="hidden-xs"><br/></span>
+    <span class="label label-warning">{{ app.clandetails.ties }}</span>
   </p>
   </div>
-
+</div>
+<div class="row">
   <div class="col-lg-10 col-lg-offset-1 col-md-12 col-md-offset-0">
     <p>{{ app.clandetails.description }}</p>
   </div>
