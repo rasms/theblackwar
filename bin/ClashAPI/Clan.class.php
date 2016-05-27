@@ -158,6 +158,26 @@ class CoC_Clan
 	}
 
 	/**
+	 * Gets the clan's war ties
+	 *
+	 * @return int, ties
+	 */
+	public function getWarTies()
+	{
+		return $this->getClan()->warTies;
+	}
+
+	/**
+	 * Gets the clan's war losses
+	 *
+	 * @return int, losses
+	 */
+	public function getWarLosses()
+	{
+		return $this->getClan()->warLosses;
+	}
+
+	/**
 	 * Gets the clan's war win streak
 	 *
 	 * @return int, streak

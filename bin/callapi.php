@@ -56,6 +56,44 @@ foreach ($clan->getAllMembers() as $clanmember)
 $avgtroph = round($tottroph / $clan->getMemberCount(), 0);
 $avglvl = round($totlvl / $clan->getMemberCount(), 0);
 
+$logcount = 1;
+
+foreach ($clan->getClanWarlogByTag() as $warlog)
+{
+	$log = new CoC_Warlog($warlog);
+
+  $warlog[$logcount] = [
+    "result" => $warlog->getResult(),
+    "endtime" => $warlog->getEndtime(),
+    "size" => $warlog->getTeamsize(),
+    "ctag" => $warlog->getClanTag(),
+    "cname" => $warlog->getClanName(),
+    "clvl" => $warlog->getClanLevel(),
+    "cattacks" => $warlog->getClanAttacks(),
+    "cstars" => $warlog->getClanStars(),
+    "cdestruct" => $warlog->getClanDestruction(),
+    "cexp" => $warlog->getClanExp(),
+    "cbadgesm" =>  $warlog->getClanBadgeUrl("small"),
+    "cbadgemd" =>  $warlog->getClanBadgeUrl("medium"),
+    "cbadgelg" =>  $warlog->getClanBadgeUrl("large"),
+    "otag" => $warlog->getOpponentTag(),
+    "oname" => $warlog->getOpponentName(),
+    "olvl" => $warlog->getOpponentLevel(),
+    "oattacks" => $warlog->getOpponentAttacks(),
+    "ostars" => $warlog->getOpponentStars(),
+    "odestruct" => $warlog->getOpponentDestruction(),
+    "oexp" => $warlog->getOpponentExp(),
+    "obadgesm" =>  $warlog->getOpponentBadgeUrl("small"),
+    "obadgemd" =>  $warlog->getOpponentBadgeUrl("medium"),
+    "obadgelg" =>  $warlog->getOpponentBadgeUrl("large"),
+  ];
+
+$logcount++;
+
+}
+
+
+
 $clandetails = [
   "badgesm" =>  $clan->getBadgeUrl("small"),
   "badgemd" =>  $clan->getBadgeUrl("medium"),
@@ -64,6 +102,8 @@ $clandetails = [
   "level" => $clan->getLevel(),
   "description" => $clan->getDescription(),
   "wins" => $clan->getWarWins(),
+  "ties" => $clan->getWarTies(),
+  "losses" => $clan->getWarLosses(),
   "streak" => $clan->getWarWinStreak(),
   "points" => $clan->getPoints(),
   "freq" => $clan->getWarFrequency(),
@@ -75,6 +115,7 @@ $clandetails = [
 
 $redis->set('clandetails', serialize($clandetails));
 $redis->set('clanmem', serialize($clanmem));
+$redis->set('warlog', serialize($warlog));
 $redis->setEx('timer', 5400, '');
 
 }

@@ -4,6 +4,7 @@ require_once "League.class.php";
 require_once "Location.class.php";
 require_once "Clan.class.php";
 require_once "Member.class.php";
+require_once "Warlog.class.php";
 
 
 /**
@@ -112,6 +113,18 @@ private $_apiKey = null;
 	public function getClanMembersByTag($tag)
 	{
 		$json = $this->sendRequest("https://api.clashofclans.com/v1/clans/".urlencode($tag)."/members");
+		return json_decode($json);
+	}
+
+	/**
+	 * Get information about the warlog a clan
+	 *
+	 * @param $tag, clantag. (e.g. #22UCCU0J)
+	 * @return array, warlog information.
+	 */
+	public function getClanWarlogByTag($tag)
+	{
+		$json = $this->sendRequest("https://api.clashofclans.com/v1/clans/".urlencode($tag)."/warlog");
 		return json_decode($json);
 	}
 

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block sub_title 'WarLog | ' %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+<h1>WarLog</h1>
+
+
+
+  <table id="warlog" class="table table-hover table-responsive text-center">
+    <thead>
+    <tr>
+      <th class="text-center hidden-xs">#</th>
+      <th class="text-center">Ausgang</th>
+      <th class="text-center hidden-xs">Size</th>
+      <th class="text-center">Gegner</th>
+      <th class="text-center">Gegner Level</th>
+      <th class="text-center">Angriffe</th>
+      <th class="text-center">Sterne</th>
+      <th class="text-center">Zerstörung</th></tr>
+    </thead>
+    <tbody>
+
+  {% for log in app.warlog %}
+      <tr>
+        <td class="hidden-xs"></td>
+        <td>{{ log.result }}</td>
+        <td class="hidden-xs">{{ log.size }}</td>
+        <td><img src="{{ log.obadgesm }}" alt="{{ log.oname }}"/> {{ log.oname }}</td>
+        <td>{{ log.olvl }}        </td>
+        <td>{{ log.cattacks }}</td>
+        <td>{{ log.cstars }}</td>
+        <td>{{ log.cdestruct }}</td>
+
+      </tr>
+  {% endfor %}
+    </tbody>
+  </table>
+<span class="pull-right text-muted"><small>Stand: {{ app.clandetails.timestamp }} Uhr</small></span>
+
+</div>
+</div>
+
+</div>
+
+{% endblock %}
