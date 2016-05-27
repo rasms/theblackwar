@@ -9,34 +9,45 @@
 <h1>WarLog</h1>
 
 {% for log in app.warlog %}
-<div class="col-sm-12">
+<div class="row>"
+  <div class="col-sm-12">
 
-  {% if log.result == 'win' %}
-  <div class="panel panel-success">
-  {% elseif log.result == 'lose' %}
-  <div class="panel panel-warning">
-  {% else %}
-  <div class="panel panel-default">
-  {% endif %}
-    <div class="panel-body">
-      <div class="col-sm-12 col-md-5">
-        <small>{{ log.cdestruct }} %</small>
-        <i class="fa fa-star"></i>{{ log.cstars }}
-        <span class="member">{{ log.cname }}</span>
-        <img src="{{ log.cbadgesm }}" alt="{{ log.cname }}-Logo"/>
-        {{ log.clvl }}
-      </div>
-      <div class="col-sm-12 col-md-2">
-        {{ log.size }} vs. {{ log.size }}
-      </div>
-      <div class="col-sm-12 col-md-5">
-        {{ log.olvl }}
-        <img src="{{ log.obadgesm }}" alt="{{ log.oname }}-Logo"/>
-        <span class="member">{{ log.oname }}</span>
-        <i class="fa fa-star"></i>{{ log.ostars }}
-        <small>{{ log.odestruct }} %</small>
-      </div>
+    {% if log.result == 'win' %}
+    <div class="panel panel-success">
+    {% elseif log.result == 'lose' %}
+    <div class="panel panel-warning">
+    {% else %}
+    <div class="panel panel-default">
+    {% endif %}
+      <div class="panel-body">
+        <div class="col-sm-12 col-md-5 text-right">
+          <small>{{ log.cdestruct }} %</small>
+          <span class="label label-default"><i class="fa fa-star"></i>{{ log.cstars }}</span>
+          <span class="member">{{ log.cname }}</span>
+          <img src="{{ log.cbadgesm }}" alt="{{ log.cname }}-Logo"/>
+          <span class="fa-stack fa-1x">
+              <i class="fa fa-certificate fa-stack-2x text-primary"></i>
+                <strong class="fa-stack-1x certificate-text center-text">{{ log.clvl }}</strong>
+          </span>
 
+        </div>
+        <div class="col-sm-12 col-md-2 text-center">
+          <p>
+          {{ log.size }} vs. {{ log.size }}
+          </p>
+        </div>
+        <div class="col-sm-12 col-md-5 text-left">
+          <span class="fa-stack fa-1x">
+              <i class="fa fa-certificate fa-stack-2x text-primary"></i>
+                <strong class="fa-stack-1x certificate-text center-text">{{ log.olvl }}</strong>
+          </span>
+          <img src="{{ log.obadgesm }}" alt="{{ log.oname }}-Logo"/>
+          <span class="member">{{ log.oname }}</span>
+          <span class="label label-default"><i class="fa fa-star"></i>{{ log.ostars }}</span>
+          <small>{{ log.odestruct }} %</small>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
