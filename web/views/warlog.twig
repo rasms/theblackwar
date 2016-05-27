@@ -9,7 +9,7 @@
 <h1>WarLog</h1>
 
 {% for log in app.warlog %}
-<div class="row>"
+<div class="row">
   <div class="col-sm-12">
 
     {% if log.result == 'win' %}
@@ -22,13 +22,14 @@
       <div class="panel-body">
         <div class="col-sm-12 col-md-5 text-right">
           <small>{{ log.cdestruct }} %</small>
-          <span class="label label-default"><i class="fa fa-star"></i>{{ log.cstars }}</span>
+          <span class="label label-default fa-lg"><i class="fa fa-star text-warning"></i>{{ log.cstars }}</span>
           <span class="member">{{ log.cname }}</span>
-          <img src="{{ log.cbadgesm }}" alt="{{ log.cname }}-Logo"/>
           <span class="fa-stack fa-1x">
               <i class="fa fa-certificate fa-stack-2x text-primary"></i>
                 <strong class="fa-stack-1x certificate-text center-text">{{ log.clvl }}</strong>
           </span>
+          <img src="{{ log.cbadgesm }}" alt="{{ log.cname }}-Logo"/>
+
 
         </div>
         <div class="col-sm-12 col-md-2 text-center">
@@ -37,13 +38,13 @@
           </p>
         </div>
         <div class="col-sm-12 col-md-5 text-left">
+          <img src="{{ log.obadgesm }}" alt="{{ log.oname }}-Logo"/>
           <span class="fa-stack fa-1x">
               <i class="fa fa-certificate fa-stack-2x text-primary"></i>
                 <strong class="fa-stack-1x certificate-text center-text">{{ log.olvl }}</strong>
           </span>
-          <img src="{{ log.obadgesm }}" alt="{{ log.oname }}-Logo"/>
           <span class="member">{{ log.oname }}</span>
-          <span class="label label-default"><i class="fa fa-star"></i>{{ log.ostars }}</span>
+          <span class="label label-default fa-lg"><i class="fa fa-star text-warning"></i>{{ log.ostars }}</span>
           <small>{{ log.odestruct }} %</small>
         </div>
 
