@@ -14,36 +14,51 @@
     {% if log.result == 'win' %}
     <div class="panel panel-success">
     {% elseif log.result == 'lose' %}
-    <div class="panel panel-warning">
+    <div class="panel panel-danger">
     {% else %}
     <div class="panel panel-default">
     {% endif %}
       <div class="panel-body">
-        <div class="col-sm-12 col-md-5 text-right-md-up">
-          <small>{{ log.cdestruct }} %</small>&nbsp;&nbsp;
-          <span class="label label-default warstars"><i class="fa fa-star text-warning"></i>{{ log.cstars }}</span>&nbsp;&nbsp;
-          <span class="member">{{ log.cname }}</span>&nbsp;&nbsp;
-          <span class="fa-stack fa-1x">
-              <i class="fa fa-certificate fa-stack-2x text-primary"></i>
-                <strong class="fa-stack-1x certificate-text center-text">{{ log.clvl }}</strong>
-          </span>&nbsp;&nbsp;
-          <img src="{{ log.cbadgesm }}" alt="{{ log.cname }}-Logo" class="warbadge"/>
+        <div class="row">
+        <div class="col-xs-2 col-sm-1 text-left">
+          <span class="label label-default warstars"><i class="fa fa-star text-warning"></i>{{ log.cstars }}</span><br>
+          <small>{{ log.cdestruct }} %</small>
         </div>
-        <div class="col-sm-12 col-md-2 text-center">
-          <p>
-          {{ log.size }} vs. {{ log.size }}
-          </p>
+        <div class="col-xs-8 col-sm-10">
+          <div class="row">
+            <div class="col-xs-12 col-md-4 text-center">
+              <span class="member">{{ log.cname }}</span>&nbsp;&nbsp;
+              <span class="fa-stack fa-1x">
+                  <i class="fa fa-certificate fa-stack-2x text-primary"></i>
+                    <strong class="fa-stack-1x certificate-text center-text">{{ log.clvl }}</strong>
+              </span>
+            </div>
+            <div class="col-xs-4 col-md-1">
+              <img src="{{ log.cbadgesm }}" alt="{{ log.cname }}-Logo" class="warbadge img-responsive center-block"/>
+            </div>
+            <div class="col-xs-4 col-md-2 text-center">
+              <p>
+              {{ log.size }} vs. {{ log.size }}
+              </p>
+            </div>
+            <div class="col-xs-4 col-md-1">
+              <img src="{{ log.obadgesm }}" alt="{{ log.oname }}-Logo" class="warbadge img-responsive center-block"/>
+            </div>
+            <div class="col-xs-12 col-md-4 text-center">
+              <span class="member">{{ log.oname }}</span>&nbsp;&nbsp;
+              <span class="fa-stack fa-1x">
+                  <i class="fa fa-certificate fa-stack-2x text-primary"></i>
+                    <strong class="fa-stack-1x certificate-text center-text">{{ log.olvl }}</strong>
+              </span>
+
+            </div>
+          </div>
         </div>
-        <div class="col-sm-12 col-md-5 text-left">
-          <img src="{{ log.obadgesm }}" alt="{{ log.oname }}-Logo" class="warbadge"/>&nbsp;&nbsp;
-          <span class="fa-stack fa-1x">
-              <i class="fa fa-certificate fa-stack-2x text-primary"></i>
-                <strong class="fa-stack-1x certificate-text center-text">{{ log.olvl }}</strong>
-          </span>&nbsp;&nbsp;
-          <span class="member">{{ log.oname }}</span>&nbsp;&nbsp;
-          <span class="label label-default warstars"><i class="fa fa-star text-warning"></i>{{ log.ostars }}</span>&nbsp;&nbsp;
+        <div class="col-xs-2 col-sm-1 text-right">
+          <span class="label label-default warstars"><i class="fa fa-star text-warning"></i>{{ log.ostars }}</span><br>
           <small>{{ log.odestruct }} %</small>
         </div>
+      </div>
       </div>
     </div>
   </div>
