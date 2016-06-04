@@ -8,26 +8,14 @@
 
 <h1>War Log</h1>
 
-<div class="row text-center">
-  <div class="col-sm-12 col-md-3">
-    <h4>ClanWar:</h4>
-  </div>
-  <div class="col-sm-12 col-md-3">
+<div class="row">
+  <div class="col-sm-12">
     <p>
-      <span class="label label-success">{{ app.clandetails.wins }}</span><span class="hidden-xs"><br/></span>
-    <small>Siege </small>
-  </p>
-  </div>
-  <div class="col-sm-12 col-md-3">
-    <p>
-      <span class="label label-danger">{{ app.clandetails.losses }}</span><span class="hidden-xs"><br/></span>
-    <small>Niederlagen </small>
-  </p>
-  </div>
-  <div class="col-sm-4 col-md-3">
-    <p>
-      <span class="label label-warning">{{ app.clandetails.ties }}</span><span class="hidden-xs"><br/></span>
-    <small>Unentschieden </small>
+      <span class="label label-success">{{ app.clandetails.wins }}</span> Siege
+
+      <span class="label label-danger">{{ app.clandetails.losses }}</span> Niederlagen
+
+      <span class="label label-warning">{{ app.clandetails.ties }}</span> Unentschieden
   </p>
   </div>
 </div>
@@ -48,9 +36,9 @@
           <span class="label label-default warstars"><i class="fa fa-star text-warning"></i>{{ log.cstars }}</span><br>
           <small>{{ log.cdestruct }} %</small>
         </div>
-        <div class="col-xs-12 col-md-10">
+        <div class="col-xs-6 col-md-10">
           <div class="row">
-            <div class="col-xs-6 col-md-4 text-center">
+            <div class="col-xs-12 col-md-4 text-center">
               <span class="member">{{ log.cname }}</span>&nbsp;&nbsp;
               <span class="fa-stack fa-1x hidden-xs">
                   <i class="fa fa-certificate fa-stack-2x text-primary"></i>
