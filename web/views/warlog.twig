@@ -26,9 +26,9 @@
         </div>
         <div class="col-xs-6 col-md-10">
           <div class="row">
-            <div class="col-xs-12 col-md-4 text-center">
+            <div class="col-xs-6 col-md-4 text-center">
               <span class="member">{{ log.cname }}</span>&nbsp;&nbsp;
-              <span class="fa-stack fa-1x">
+              <span class="fa-stack fa-1x hidden-xs">
                   <i class="fa fa-certificate fa-stack-2x text-primary"></i>
                     <strong class="fa-stack-1x certificate-text center-text">{{ log.clvl }}</strong>
               </span>
@@ -36,17 +36,17 @@
             <div class="col-xs-12 col-md-1">
               <img src="{{ log.cbadgesm }}" alt="{{ log.cname }}-Logo" class="warbadge img-responsive center-block"/>
             </div>
-            <div class="col-xs-12 col-md-2 text-center">
+            <div class="col-xs-12 col-md-2 text-center hidden-xs">
               <p>
               {{ log.size }} vs. {{ log.size }}
               </p>
             </div>
-            <div class="col-xs-12 col-md-1">
+            <div class="col-xs-6 col-md-1">
               <img src="{{ log.obadgesm }}" alt="{{ log.oname }}-Logo" class="warbadge img-responsive center-block"/>
             </div>
             <div class="col-xs-12 col-md-4 text-center">
               <span class="member">{{ log.oname }}</span>&nbsp;&nbsp;
-              <span class="fa-stack fa-1x">
+              <span class="fa-stack fa-1x hidden-xs">
                   <i class="fa fa-certificate fa-stack-2x text-primary"></i>
                     <strong class="fa-stack-1x certificate-text center-text">{{ log.olvl }}</strong>
               </span>
