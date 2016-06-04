@@ -17,7 +17,6 @@ else {
 $timestamp = date("d.m.Y - H:i");
 
 $clan = new CoC_Clan("#QVQRYYG");
-$wl = new CoC_Warlog("#QVQRYYG");
 
 $tottroph = 0;
 $totlvl = 0;
@@ -56,44 +55,6 @@ foreach ($clan->getAllMembers() as $clanmember)
 $avgtroph = round($tottroph / $clan->getMemberCount(), 0);
 $avglvl = round($totlvl / $clan->getMemberCount(), 0);
 
-$logcount = 1;
-
-foreach ($wl->getItems() as $warlog)
-{
-  $log = new CoC_Warlog($warlog);
-
-  $wars[$logcount] = [
-    "result" => $log->getResult(),
-    "endtime" => $log->getEndtime(),
-    "size" => $log->getTeamsize(),
-    "ctag" => $log->getClanTag(),
-    "cname" => $log->getClanName(),
-    "clvl" => $log->getClanLevel(),
-    "cattacks" => $log->getClanAttacks(),
-    "cstars" => $log->getClanStars(),
-    "cdestruct" => number_format($log->getClanDestruction(), 2),
-    "cexp" => $log->getClanExp(),
-    "cbadgesm" =>  $log->getClanBadgeUrl("small"),
-    "cbadgemd" =>  $log->getClanBadgeUrl("medium"),
-    "cbadgelg" =>  $log->getClanBadgeUrl("large"),
-    "otag" => $log->getOpponentTag(),
-    "oname" => $log->getOpponentName(),
-    "olvl" => $log->getOpponentLevel(),
-    "oattacks" => $log->getOpponentAttacks(),
-    "ostars" => $log->getOpponentStars(),
-    "odestruct" => number_format($log->getOpponentDestruction(), 2),
-    "oexp" => $log->getOpponentExp(),
-    "obadgesm" =>  $log->getOpponentBadgeUrl("small"),
-    "obadgemd" =>  $log->getOpponentBadgeUrl("medium"),
-    "obadgelg" =>  $log->getOpponentBadgeUrl("large"),
-  ];
-
-$logcount++;
-
-}
-
-var_dump($wars);
-
 
 $clandetails = [
   "badgesm" =>  $clan->getBadgeUrl("small"),
@@ -116,7 +77,6 @@ $clandetails = [
 
 $redis->set('clandetails', serialize($clandetails));
 $redis->set('clanmem', serialize($clanmem));
-$redis->set('warlog', serialize($wars));
 $redis->setEx('timer', 5400, '');
 
 }
