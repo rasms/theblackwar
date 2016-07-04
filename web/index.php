@@ -44,14 +44,14 @@ $app->get('/mitglieder', function() use($app) {
   return $app['twig']->render('mitglieder.twig');
 });
 
-$app->get('/warlog', function() use($app) {
-	$warlog = $app['predis']->get('warlog');
-	$warlog = unserialize($warlog);
-	$app['warlog'] = $warlog;
-  $app['monolog']->addDebug('logging output.');
-
-  return $app['twig']->render('warlog.twig');
-});
+// $app->get('/warlog', function() use($app) {
+// 	$warlog = $app['predis']->get('warlog');
+// 	$warlog = unserialize($warlog);
+// 	$app['warlog'] = $warlog;
+//   $app['monolog']->addDebug('logging output.');
+// 
+//   return $app['twig']->render('warlog.twig');
+// });
 
 $app->get('/clanregeln', function() use($app) {
   $app['monolog']->addDebug('logging output.');
